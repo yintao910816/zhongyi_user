@@ -25,7 +25,7 @@ class ConsultedTableViewCell: UITableViewCell {
     let consultBtn = UIButton()
     
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.selectionStyle = .none
@@ -61,9 +61,9 @@ class ConsultedTableViewCell: UITableViewCell {
             make.width.equalTo(70)
             make.height.equalTo(25)
         }
-        consultBtn.setTitle("再次咨询", for: UIControlState.normal)
+        consultBtn.setTitle("再次咨询", for: .normal)
         consultBtn.titleLabel?.font = UIFont.init(name: kReguleFont, size: 14)
-        consultBtn.setTitleColor(kDefaultThemeColor, for: UIControlState.normal)
+        consultBtn.setTitleColor(kDefaultThemeColor, for: .normal)
         consultBtn.layer.cornerRadius = 5
         consultBtn.layer.borderWidth = 0.5
         consultBtn.layer.borderColor = kDefaultThemeColor.cgColor

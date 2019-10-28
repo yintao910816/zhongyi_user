@@ -40,10 +40,10 @@ class CommentStarView: UIView {
         for i in 0..<5 {
             let starBtn = UIButton.init(frame: CGRect.init(x: width * CGFloat(i), y: 0, width: width, height: height))
             starBtn.tag = i + 1
-            starBtn.setImage(UIImage.init(named: "评星2"), for: UIControlState.normal)
-            starBtn.setImage(UIImage.init(named: "评星1"), for: UIControlState.selected)
+            starBtn.setImage(UIImage.init(named: "评星2"), for: .normal)
+            starBtn.setImage(UIImage.init(named: "评星1"), for: .selected)
             
-            starBtn.addTarget(self, action: #selector(CommentStarView.chooseAction), for: UIControlEvents.touchUpInside)
+            starBtn.addTarget(self, action: #selector(CommentStarView.chooseAction), for: .touchUpInside)
             
             imgVArr.append(starBtn)
             
@@ -52,7 +52,7 @@ class CommentStarView: UIView {
         
     }
     
-    func chooseAction(btn : UIButton){
+    @objc func chooseAction(btn : UIButton){
         if allowClick == true {
             numForStar = btn.tag
         }

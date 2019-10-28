@@ -42,7 +42,7 @@ class UserInfoViewController: BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(UserInfoViewController.setUserInfo), name: NSNotification.Name.init(UPDATE_USER_INFO), object: nil)
     }
     
-    func setUserInfo(){
+    @objc func setUserInfo(){
         userInfoM = UserManager.shareIntance.HCUserInfo
     }
     

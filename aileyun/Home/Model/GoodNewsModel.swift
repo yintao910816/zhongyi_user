@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import HandyJSON
 
-class GoodNewsModel: NSObject {
+class GoodNewsModel: NSObject, HandyJSON {
     
     var name : String = "匿名"
     var pid : String?
@@ -20,11 +21,14 @@ class GoodNewsModel: NSObject {
     var type : String = "pregnant"   //childbirth
     
     // MARK:- 构造函数
-    init(_ dict : [String : Any]) {
-        super.init()
-        
-        setValuesForKeys(dict)
-    }
-    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
+//    init(_ dict : [String : Any]) {
+//        super.init()
+//
+//        setValuesForKeys(dict)
+//    }
+//    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
 
+    required override init() {
+        
+    }
 }

@@ -25,7 +25,7 @@ class NetworkStatusTool: NSObject {
             case .restricted:
                 HCPrint(message: "Restricted")
                 showAlert(title: "蜂窝数据没有授权", message: "以免影响使用，请到设置里面打开蜂窝数据开关", callback: {
-                    let url = URL.init(string: UIApplicationOpenSettingsURLString)
+                    let url = URL.init(string: UIApplication.openSettingsURLString)
                     if UIApplication.shared.canOpenURL(url!) {
                         UIApplication.shared.openURL(url!)
                     }
@@ -36,7 +36,7 @@ class NetworkStatusTool: NSObject {
             case .restrictedStateUnknown:
                 HCPrint(message: "RestrictedStateUnknown")
                 showAlert(title: "蜂窝数据没有授权", message: "以免影响使用，请到设置里面打开蜂窝数据开关", callback: {
-                    let url = URL.init(string: UIApplicationOpenSettingsURLString)
+                    let url = URL.init(string: UIApplication.openSettingsURLString)
                     if UIApplication.shared.canOpenURL(url!) {
                         UIApplication.shared.openURL(url!)
                     }

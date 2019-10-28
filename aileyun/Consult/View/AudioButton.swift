@@ -27,7 +27,7 @@ class AudioButton: UIButton {
         secondsLabel.isHidden = true
         
         voiceIV.image = UIImage.init(named: "hc_yuyin33")
-        voiceIV.contentMode = UIViewContentMode.right
+        voiceIV.contentMode = .right
         self.addSubview(voiceIV)
         
     }

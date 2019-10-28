@@ -26,7 +26,7 @@ class HomeFunctionView: UIView {
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         layout.itemSize = CGSize.init(width: FuncSizeWidth, height: FuncSizeWidth)
-        layout.scrollDirection = UICollectionViewScrollDirection.vertical
+        layout.scrollDirection = .vertical
         
         let collectV = UICollectionView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: FuncSizeWidth), collectionViewLayout: layout)
         

@@ -333,7 +333,7 @@
 		3CFAAEFE1F5013C600096D98 /* HC_consultCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFAAEFD1F5013C600096D98 /* HC_consultCellModel.swift */; };
 		3CFAAF001F50170800096D98 /* HC_consultViewmodel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFAAEFF1F50170800096D98 /* HC_consultViewmodel.swift */; };
 		3CFADBD31F6908B2008E3E1E /* noData.png in Resources */ = {isa = PBXBuildFile; fileRef = 3CFADBD11F6908B2008E3E1E /* noData.png */; };
-		F666A4136C77989F16603994 /* Pods_aileyun.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E253F5689AE7ECF7180033EA /* Pods_aileyun.framework */; };
+		C3AD066E30CCA876C19F03DF /* Pods_aileyun.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F0F4F6831638DF7D29D3F2C /* Pods_aileyun.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -349,7 +349,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0D6EC5B0C68E9D83B7A622C0 /* Pods-aileyun.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aileyun.release.xcconfig"; path = "Pods/Target Support Files/Pods-aileyun/Pods-aileyun.release.xcconfig"; sourceTree = "<group>"; };
+		1DC7E48CD0C5EA74ADD42B29 /* Pods-aileyun.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aileyun.debug.xcconfig"; path = "Target Support Files/Pods-aileyun/Pods-aileyun.debug.xcconfig"; sourceTree = "<group>"; };
 		3C0085411F31A99D009BCCC6 /* HCLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HCLocationManager.swift; sourceTree = "<group>"; };
 		3C0085431F31AFE1009BCCC6 /* BindHospitalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BindHospitalViewController.swift; path = ../common/BindHospitalViewController.swift; sourceTree = "<group>"; };
 		3C0085451F31B9C1009BCCC6 /* HospitalListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HospitalListViewController.swift; sourceTree = "<group>"; };
@@ -691,8 +691,8 @@
 		3CFAAEFD1F5013C600096D98 /* HC_consultCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HC_consultCellModel.swift; sourceTree = "<group>"; };
 		3CFAAEFF1F50170800096D98 /* HC_consultViewmodel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HC_consultViewmodel.swift; sourceTree = "<group>"; };
 		3CFADBD11F6908B2008E3E1E /* noData.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noData.png; sourceTree = "<group>"; };
-		6D2808A40648D35BFB8F8A19 /* Pods-aileyun.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aileyun.debug.xcconfig"; path = "Pods/Target Support Files/Pods-aileyun/Pods-aileyun.debug.xcconfig"; sourceTree = "<group>"; };
-		E253F5689AE7ECF7180033EA /* Pods_aileyun.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_aileyun.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F0F4F6831638DF7D29D3F2C /* Pods_aileyun.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_aileyun.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4A0D5C487634F2B4B338930 /* Pods-aileyun.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-aileyun.release.xcconfig"; path = "Target Support Files/Pods-aileyun/Pods-aileyun.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -718,13 +718,22 @@
 				3C1220E01EFB5C79000BD52D /* libsqlite3.tbd in Frameworks */,
 				3C60B66A1F1892DB004B4AFA /* libopencore-amrwb.a in Frameworks */,
 				3C1220DA1EFB5C47000BD52D /* libiconv.tbd in Frameworks */,
-				F666A4136C77989F16603994 /* Pods_aileyun.framework in Frameworks */,
+				C3AD066E30CCA876C19F03DF /* Pods_aileyun.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		36757527FA1032FE44E09EDD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1DC7E48CD0C5EA74ADD42B29 /* Pods-aileyun.debug.xcconfig */,
+				D4A0D5C487634F2B4B338930 /* Pods-aileyun.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		3C1577FC1F4EA3AC00320299 /* newPort */ = {
 			isa = PBXGroup;
 			children = (
@@ -789,8 +798,8 @@
 			children = (
 				3C3D78321EF3C07600DE6F46 /* aileyun */,
 				3C3D78311EF3C07600DE6F46 /* Products */,
-				B69D16D35A767BC7B7DBCDDD /* Pods */,
 				D8DBB5A3372BBE89884DBBF6 /* Frameworks */,
+				36757527FA1032FE44E09EDD /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1453,15 +1462,6 @@
 			path = model;
 			sourceTree = "<group>";
 		};
-		B69D16D35A767BC7B7DBCDDD /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				6D2808A40648D35BFB8F8A19 /* Pods-aileyun.debug.xcconfig */,
-				0D6EC5B0C68E9D83B7A622C0 /* Pods-aileyun.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		D8DBB5A3372BBE89884DBBF6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1478,7 +1478,7 @@
 				3C1220DD1EFB5C64000BD52D /* CoreGraphics.framework */,
 				3C1220DB1EFB5C55000BD52D /* SystemConfiguration.framework */,
 				3C1220D91EFB5C47000BD52D /* libiconv.tbd */,
-				E253F5689AE7ECF7180033EA /* Pods_aileyun.framework */,
+				5F0F4F6831638DF7D29D3F2C /* Pods_aileyun.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1490,12 +1490,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3C3D78421EF3C07600DE6F46 /* Build configuration list for PBXNativeTarget "aileyun" */;
 			buildPhases = (
-				8B508510E44DF694D4F0F0E8 /* [CP] Check Pods Manifest.lock */,
+				1E4ED67A109BE1F381D93451 /* [CP] Check Pods Manifest.lock */,
 				3C3D782C1EF3C07600DE6F46 /* Sources */,
 				3C3D782D1EF3C07600DE6F46 /* Frameworks */,
 				3C3D782E1EF3C07600DE6F46 /* Resources */,
 				3C3858D71FA0ABB50035843A /* CopyFiles */,
-				7CCB4D17CE784CBD6E63DA4C /* [CP] Embed Pods Frameworks */,
+				F9BC73F920252DEA16DAD8AF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1729,39 +1729,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7CCB4D17CE784CBD6E63DA4C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-aileyun/Pods-aileyun-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
-				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
-				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
-				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-aileyun/Pods-aileyun-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8B508510E44DF694D4F0F0E8 /* [CP] Check Pods Manifest.lock */ = {
+		1E4ED67A109BE1F381D93451 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1781,6 +1749,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F9BC73F920252DEA16DAD8AF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-aileyun/Pods-aileyun-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-aileyun/Pods-aileyun-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2033,11 +2031,12 @@
 		};
 		3C3D78431EF3C07600DE6F46 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6D2808A40648D35BFB8F8A19 /* Pods-aileyun.debug.xcconfig */;
+			baseConfigurationReference = 1DC7E48CD0C5EA74ADD42B29 /* Pods-aileyun.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = aileyun/aileyun.entitlements;
+				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_TEAM = 48R8MRX5NZ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2060,6 +2059,7 @@
 					"$(PROJECT_DIR)/aileyun/tools/VoiceConvert/lib",
 					"$(PROJECT_DIR)/aileyun/tools/UMessage_Sdk_1.5.0a",
 				);
+				MARKETING_VERSION = 2.0.002;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -2103,11 +2103,12 @@
 		};
 		3C3D78441EF3C07600DE6F46 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0D6EC5B0C68E9D83B7A622C0 /* Pods-aileyun.release.xcconfig */;
+			baseConfigurationReference = D4A0D5C487634F2B4B338930 /* Pods-aileyun.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = aileyun/aileyun.entitlements;
+				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_TEAM = 48R8MRX5NZ;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2130,6 +2131,7 @@
 					"$(PROJECT_DIR)/aileyun/tools/VoiceConvert/lib",
 					"$(PROJECT_DIR)/aileyun/tools/UMessage_Sdk_1.5.0a",
 				);
+				MARKETING_VERSION = 2.0.002;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

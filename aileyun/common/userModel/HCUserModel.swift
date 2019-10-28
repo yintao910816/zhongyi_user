@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import HandyJSON
 
-class HCUserModel: NSObject {
+class HCUserModel: NSObject, HandyJSON {
 
     var phone : String?
     var nickname : String?
@@ -17,14 +18,17 @@ class HCUserModel: NSObject {
     var token : String?
     
     
-    convenience init(_ dic : [String : Any]) {
-        self.init()
-        setValuesForKeys(dic)
-    }
+//    convenience init(_ dic : [String : Any]) {
+//        self.init()
+//        setValuesForKeys(dic)
+//    }
+//
+//    override func setValue(_ value: Any?, forUndefinedKey key: String) {
+//        //
+//    }
     
-    override func setValue(_ value: Any?, forUndefinedKey key: String) {
-        //
+    required override init() {
+        
     }
-    
     
 }

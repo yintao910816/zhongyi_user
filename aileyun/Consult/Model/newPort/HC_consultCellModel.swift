@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import HandyJSON
 
-class HC_consultCellModel: NSObject {
+class HC_consultCellModel: NSObject, HandyJSON {
     var type : String?
     
     var headImg : String?
@@ -24,7 +25,7 @@ class HC_consultCellModel: NSObject {
         }
     }
     
-    var createT : String?
+    var createT : String = ""
     
     var imageList : String?
     
@@ -34,11 +35,15 @@ class HC_consultCellModel: NSObject {
 
     
     // MARK:- 构造函数
-    init(_ dict : [String : Any]) {
-        super.init()
+//    init(_ dict : [String : Any]) {
+//        super.init()
+//
+//        setValuesForKeys(dict)
+//    }
+//    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
+
+    required override init() {
         
-        setValuesForKeys(dict)
     }
-    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
 
 }

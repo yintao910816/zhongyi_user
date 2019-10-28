@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import HandyJSON
 
-class DoctorModel: NSObject {
+class DoctorModel: NSObject, HandyJSON {
     
     
     var doctorId : NSNumber?
@@ -32,13 +33,16 @@ class DoctorModel: NSObject {
     
     
     // MARK:- 构造函数
-    init(_ dict : [String : Any]) {
-        super.init()
-        
-        setValuesForKeys(dict)
-    }
-    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
-    
+//    init(_ dict : [String : Any]) {
+//        super.init()
+//
+//        setValuesForKeys(dict)
+//    }
+//    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
+//
 
+    required override init() {
+        
+    }
 
 }

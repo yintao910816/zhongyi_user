@@ -72,7 +72,7 @@ class DoctorIntroductionController: BaseViewController {
     lazy var consultBtn : UIButton = {
         let space = AppDelegate.shareIntance.space
         let b = UIButton.init(frame: CGRect.init(x: 0, y: SCREEN_HEIGHT - 48 - space.bottomSpace, width: SCREEN_WIDTH, height: 48))
-        b.setTitle("立即咨询", for: UIControlState.normal)
+        b.setTitle("立即咨询", for: .normal)
         b.titleLabel?.font = UIFont.init(name: kReguleFont, size: 16)
         b.backgroundColor = kDefaultThemeColor
         return b
@@ -84,7 +84,7 @@ class DoctorIntroductionController: BaseViewController {
         self.navigationItem.title = "医生简介"
         tableV.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 48, right: 0)
         
-        let footV = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(DoctorIntroductionController.requestData))
+        let footV = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(requestData))
         tableV.mj_footer = footV
     
         initUI()
@@ -102,18 +102,18 @@ class DoctorIntroductionController: BaseViewController {
         tableV.register(DoctorCommentTVCell.self, forCellReuseIdentifier: commentCell)
         
         self.view.addSubview(consultBtn)
-        consultBtn.addTarget(self, action: #selector(DoctorIntroductionController.consult), for: UIControlEvents.touchUpInside)
+        consultBtn.addTarget(self, action: #selector(DoctorIntroductionController.consult), for: .touchUpInside)
         
         initHeaderView()
     }
     
-    func consult(){
+    @objc func consult(){
         let vc = SubmitViewController()
         vc.docModel = docModel
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func requestData(){
+    @objc func requestData(){
         guard hasNext == true else{
             tableV.mj_footer.endRefreshing()
             HCShowError(info: "没有更多信息")
@@ -245,7 +245,7 @@ extension DoctorIntroductionController {
             make.width.height.equalTo(80)
         }
         headV.layer.cornerRadius = 40
-        headV.contentMode = UIViewContentMode.scaleAspectFill
+        headV.contentMode = .scaleAspectFill
         headV.clipsToBounds = true
         
         containerV.addSubview(nameL)

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import HandyJSON
 
 class dialogModel: NSObject {
     var type : String?
@@ -24,12 +25,12 @@ class dialogModel: NSObject {
     
     
     // MARK:- 构造函数
-    init(_ dict : [String : Any]) {
-        super.init()
-        
-        setValuesForKeys(dict)
-    }
-    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
+//    init(_ dict : [String : Any]) {
+//        super.init()
+//
+//        setValuesForKeys(dict)
+//    }
+//    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
     
     override var description: String {
         get{
@@ -37,4 +38,7 @@ class dialogModel: NSObject {
         }
     }
 
+    required override init() {
+        
+    }
 }

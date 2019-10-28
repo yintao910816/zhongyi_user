@@ -34,13 +34,13 @@ class MyDoctorViewController: BaseViewController {
         
         tableV.register(DoctorAttentionTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         
-        let footV = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(MyDoctorViewController.requestData))
+        let footV = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(requestData))
         tableV.mj_footer = footV
         
         requestData()
     }
 
-    func requestData(){
+    @objc func requestData(){
         
         guard hasNext == true else{
             self.tableV.mj_footer.endRefreshing()

@@ -249,7 +249,7 @@ extension HttpClient {
                 let fileN = String.init(format: "file%d", i)
                 let imageN = String.init(format: "image%d.jpg", i)
                 if imageFile.isKind(of: UIImage.classForCoder()){
-                    formData.appendPart(withFileData: UIImageJPEGRepresentation(imageFile, 0.2)!, name: fileN, fileName: imageN, mimeType: "image/jpg")
+                    formData.appendPart(withFileData: imageFile.jpegData(compressionQuality: 0.2)!, name: fileN, fileName: imageN, mimeType: "image/jpg")
                 }
             }
         }, progress: { (progress) in
@@ -309,7 +309,7 @@ extension HttpClient {
         HCmanager.post(URLString, parameters: parameDic, constructingBodyWith: { (formData) in
             let fileN = "file"
             let imageN = "img.jpg"
-            formData.appendPart(withFileData: UIImageJPEGRepresentation(img, 0.1)!, name: fileN, fileName: imageN, mimeType: "image/jpg")
+            formData.appendPart(withFileData: img.jpegData(compressionQuality: 0.1)!, name: fileN, fileName: imageN, mimeType: "image/jpg")
         }, progress: { (progress) in
             //
         }, success: { (task, any) in
@@ -483,6 +483,7 @@ extension HttpClient {
     }
 }
 
+import HandyJSON
 extension HttpClient {
     
     func getWeixinOpenId(code : String){
@@ -546,7 +547,8 @@ extension HttpClient {
                 //
             }, success: { (task, any) in
                 let dic = any as! Dictionary<String, Any>
-                UserManager.shareIntance.UserInfoModel = UserInfoModel.init(dic)
+//                UserManager.shareIntance.UserInfoModel = UserInfoModel.init(dic)
+                UserManager.shareIntance.UserInfoModel = JSONDeserializer<UserInfoModel>.deserializeFrom(dict: dic)
                 HCPrint(message: dic)
             }, failure: { (task, err) in
                 HCPrint(message: err)

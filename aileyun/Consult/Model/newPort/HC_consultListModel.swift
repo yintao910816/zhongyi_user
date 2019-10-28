@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import HandyJSON
 
-class HC_consultListModel: NSObject {
+class HC_consultListModel: NSObject, HandyJSON {
 
     var content : String?
     var consultationId : NSNumber?
@@ -24,4 +25,7 @@ class HC_consultListModel: NSObject {
     
     var createTime : String?
     
+    required override init() {
+        
+    }
 }

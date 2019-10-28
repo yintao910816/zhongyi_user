@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import HandyJSON
 
 class MainTabBarController: UITabBarController {
     
-    override var childViewControllerForStatusBarStyle: UIViewController?{
+    override var childForStatusBarStyle: UIViewController?{
         get {
             return self.selectedViewController
         }
@@ -37,13 +38,15 @@ class MainTabBarController: UITabBarController {
         let tempData = UserDefaults.standard.value(forKey: kBindDic)
         if tempData != nil {
             let dic = tempData as! [String : Any]
-            UserManager.shareIntance.BindedModel = BindedModel.init(dic)
+//            UserManager.shareIntance.BindedModel = BindedModel.init(dic)
+            UserManager.shareIntance.BindedModel = JSONDeserializer<BindedModel>.deserializeFrom(dict: dic)
         }
         
         let tempData2 = UserDefaults.standard.value(forKey: kUserInfoDic)
         if tempData2 != nil {
             let dic = tempData2 as! [String : Any]
-            UserManager.shareIntance.HCUserInfo = HCUserInfoModel.init(dic)
+//            UserManager.shareIntance.HCUserInfo = HCUserInfoModel.init(dic)
+            UserManager.shareIntance.HCUserInfo = JSONDeserializer<HCUserInfoModel>.deserializeFrom(dict: dic)
         }
     }
     
@@ -77,7 +80,7 @@ class MainTabBarController: UITabBarController {
         
         // 包装导航控制器
         let nav = BaseNavigationController(rootViewController: childController)
-        self.addChildViewController(nav)
+        self.addChild(nav)
     }
     
     override func didReceiveMemoryWarning() {

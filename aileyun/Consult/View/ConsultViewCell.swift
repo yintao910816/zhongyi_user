@@ -52,7 +52,7 @@ class ConsultViewCell: UITableViewCell {
     let commentV = starView.init(frame: CGRect.init(x: 0, y: 0, width: 100, height: 20))
     
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.selectionStyle = .none
@@ -65,7 +65,7 @@ class ConsultViewCell: UITableViewCell {
         }
         imgV.layer.cornerRadius = 25
         imgV.clipsToBounds = true
-        imgV.contentMode = UIViewContentMode.scaleAspectFill
+        imgV.contentMode = .scaleAspectFill
         
         self.addSubview(nameL)
         nameL.snp.updateConstraints { (make) in

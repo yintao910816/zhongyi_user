@@ -71,7 +71,7 @@ class treasuryTableViewCell: UITableViewCell {
         layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 10
         layout.itemSize = CGSize.init(width: KImgWidth, height: KImgWidth)
-        layout.scrollDirection = UICollectionViewScrollDirection.horizontal
+        layout.scrollDirection = .horizontal
         
         let collectV = UICollectionView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH , height: KImgWidth), collectionViewLayout: layout)
         
@@ -137,9 +137,9 @@ class treasuryTableViewCell: UITableViewCell {
         }
     }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.selectionStyle = UITableViewCellSelectionStyle.none
+        self.selectionStyle = .none
         
         initUI()
     }
@@ -187,7 +187,7 @@ class treasuryTableViewCell: UITableViewCell {
         
         let readIV = UIImageView()
         readIV.image = UIImage.init(named: "浏览量")
-        readIV.contentMode = UIViewContentMode.scaleAspectFit
+        readIV.contentMode = .scaleAspectFit
         self.addSubview(readIV)
         readIV.snp.updateConstraints { (make) in
             make.right.equalTo(readL.snp.left)
@@ -250,7 +250,7 @@ class treasuryTableViewCell: UITableViewCell {
         
         let praiseIV = UIImageView()
         praiseIV.image = UIImage.init(named: "点赞量")
-        praiseIV.contentMode = UIViewContentMode.scaleAspectFit
+        praiseIV.contentMode = .scaleAspectFit
         self.addSubview(praiseIV)
         praiseIV.snp.updateConstraints { (make) in
             make.right.equalTo(praiseL.snp.left)
@@ -270,7 +270,7 @@ class treasuryTableViewCell: UITableViewCell {
         
         let commentIV = UIImageView()
         commentIV.image = UIImage.init(named: "评论量")
-        commentIV.contentMode = UIViewContentMode.scaleAspectFit
+        commentIV.contentMode = .scaleAspectFit
         self.addSubview(commentIV)
         commentIV.snp.updateConstraints { (make) in
             make.right.equalTo(commentL.snp.left)

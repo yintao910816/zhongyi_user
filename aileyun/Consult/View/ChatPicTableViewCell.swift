@@ -15,16 +15,16 @@ class ChatPicTableViewCell: BaseChatTableViewCell {
     var cellCenter = CGPoint.zero
     var cellImage = UIImage.init()
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.addSubview(imgV)
         imgV.layer.cornerRadius = 20
         imgV.clipsToBounds = true
         imgV.isUserInteractionEnabled = true
-        imgV.contentMode = UIViewContentMode.scaleToFill
+        imgV.contentMode = .scaleToFill
         
-        let tapG = UITapGestureRecognizer.init(target: self, action: #selector(ChatPicTableViewCell.tapPic))
+        let tapG = UITapGestureRecognizer.init(target: self, action: #selector(tapPic))
         imgV.addGestureRecognizer(tapG)
     }
     
@@ -40,17 +40,17 @@ class ChatPicTableViewCell: BaseChatTableViewCell {
         }
     }
     
-    override func getPhotoCenter()->CGPoint{
+    func getPhotoCenter()->CGPoint{
         HCPrint(message: "PIC ****    *****")
         return cellCenter
     }
     
-    override func getImage()->UIImage{
+    func getImage()->UIImage{
         HCPrint(message: "PIC ****    *****")
         return cellImage
     }
     
-    func tapPic(){
+    @objc func tapPic(){
         if let block = convertBlock {
             cellCenter = block(imgV.center)
             HCPrint(message: cellCenter)

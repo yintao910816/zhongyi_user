@@ -36,7 +36,7 @@ class badgeButton: UIButton {
         super.init(frame: frame)
         
         imgV.image = UIImage.init(named: "信-黑")
-        imgV.contentMode = UIViewContentMode.scaleAspectFit
+        imgV.contentMode = .scaleAspectFit
         self.addSubview(imgV)
         
         titelL.font = UIFont.init(name: kReguleFont, size: 12)

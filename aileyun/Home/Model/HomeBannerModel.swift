@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import HandyJSON
 
-class HomeBannerModel: NSObject {
+class HomeBannerModel: NSObject, HandyJSON {
     
     var clickCount : String?
     var path : String?
@@ -24,11 +25,15 @@ class HomeBannerModel: NSObject {
     
     
     // MARK:- 构造函数
-    init(_ dict : [String : Any]) {
-        super.init()
-        
-        setValuesForKeys(dict)
-    }
-    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
+//    init(_ dict : [String : Any]) {
+//        super.init()
+//
+//        setValuesForKeys(dict)
+//    }
+//    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
     
+    required override init() {
+        
+    }
+
 }

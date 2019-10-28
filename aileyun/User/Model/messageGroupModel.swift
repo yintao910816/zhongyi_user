@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import HandyJSON
 
-class messageGroupModel: NSObject {
+class messageGroupModel: NSObject, HandyJSON {
     
     var content : String?
     
@@ -21,12 +22,15 @@ class messageGroupModel: NSObject {
     var pushTime : NSNumber?
     
     // MARK:- 构造函数
-    init(_ dict : [String : Any]) {
-        super.init()
-        
-        setValuesForKeys(dict)
-    }
-    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
+//    init(_ dict : [String : Any]) {
+//        super.init()
+//
+//        setValuesForKeys(dict)
+//    }
+//    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
 
+    required override init() {
+        
+    }
 
 }

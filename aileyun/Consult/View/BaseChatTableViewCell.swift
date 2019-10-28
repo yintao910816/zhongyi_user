@@ -50,14 +50,14 @@ class BaseChatTableViewCell: UITableViewCell {
 
     
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.selectionStyle = UITableViewCellSelectionStyle.none
+        self.selectionStyle = UITableViewCell.SelectionStyle.none
         
         self.addSubview(headImgV)
         headImgV.layer.cornerRadius = 20
         headImgV.clipsToBounds = true
-        headImgV.contentMode = UIViewContentMode.scaleAspectFill
+        headImgV.contentMode = UIView.ContentMode.scaleAspectFill
         
         self.addSubview(bubbleV)
         
@@ -85,13 +85,13 @@ class BaseChatTableViewCell: UITableViewCell {
 }
 
 extension BaseChatTableViewCell : GetPhotoCenterDelegate {
-    func getPhotoCenter()->CGPoint{
-        HCPrint(message: "base ***** ******")
-        return CGPoint.zero
-    }
-    
-    func getImage()->UIImage{
-        HCPrint(message: "base ***** ******")
-        return UIImage.init()
-    }
+//    func getPhotoCenter()->CGPoint{
+//        HCPrint(message: "base ***** ******")
+//        return CGPoint.zero
+//    }
+//
+//    func getImage()->UIImage{
+//        HCPrint(message: "base ***** ******")
+//        return UIImage.init()
+//    }
 }

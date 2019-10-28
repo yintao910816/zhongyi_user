@@ -36,7 +36,7 @@ class PhotoPickerView: UIView {
         layout.minimumLineSpacing = CGFloat(itemSpace)
         layout.minimumInteritemSpacing = CGFloat(itemSpace)
         layout.itemSize = CGSize.init(width: itemWidth, height: itemHeight)
-        layout.scrollDirection = UICollectionViewScrollDirection.horizontal
+        layout.scrollDirection = .horizontal
         
         collectionV = UICollectionView.init(frame: CGRect.init(x: 0, y: margin_top, width: frame.size.width , height: frame.size.height - margin_top * 2), collectionViewLayout: layout)
         
@@ -107,7 +107,7 @@ extension PhotoPickerView {
     func takePhoto(){
         if checkCameraPermissions() {
             let photoVC = UIImagePickerController()
-            photoVC.sourceType = UIImagePickerControllerSourceType.camera
+            photoVC.sourceType = .camera
             photoVC.delegate = self
             photoVC.allowsEditing = true
             UIApplication.shared.keyWindow?.rootViewController?.present(photoVC, animated: true, completion: nil)
@@ -115,7 +115,7 @@ extension PhotoPickerView {
             authorizationForCamera(confirmBlock: { [weak self]()in
                 DispatchQueue.main.async {
                     let photoVC = UIImagePickerController()
-                    photoVC.sourceType = UIImagePickerControllerSourceType.camera
+                    photoVC.sourceType = .camera
                     photoVC.delegate = self
                     photoVC.allowsEditing = true
                     UIApplication.shared.keyWindow?.rootViewController?.present(photoVC, animated: true, completion: nil)
@@ -127,7 +127,7 @@ extension PhotoPickerView {
     
     func systemPic(){
         let systemPicVC = UIImagePickerController()
-        systemPicVC.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        systemPicVC.sourceType = .photoLibrary
         systemPicVC.delegate = self
         systemPicVC.allowsEditing = true
         UIApplication.shared.keyWindow?.rootViewController?.present(systemPicVC, animated: true, completion: nil)
@@ -135,10 +135,10 @@ extension PhotoPickerView {
 }
 
 extension PhotoPickerView : UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true, completion: nil)
         //UIImagePickerControllerEditedImage   UIImagePickerControllerOriginalImage
-        let image  = info["UIImagePickerControllerEditedImage"] as! UIImage
+        let image  = info[UIImagePickerController.InfoKey.editedImage] as! UIImage
         photoData.append(image)
         if let block = picBlock {
             block(photoData)

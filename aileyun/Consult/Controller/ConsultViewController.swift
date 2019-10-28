@@ -48,7 +48,7 @@ class ConsultViewController: BaseViewController, UITableViewDelegate, UITableVie
         
         tableView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 44, right: 0)
         
-        let footV = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(ConsultViewController.requestData))
+        let footV = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(requestData))
         tableView.mj_footer = footV
         
         requestData()
@@ -58,15 +58,15 @@ class ConsultViewController: BaseViewController, UITableViewDelegate, UITableVie
         let contV = UIView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH - 40, height: 30))
         
         let searchBtn = UIButton.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH - 120, height: 30))
-        searchBtn.setImage(UIImage.init(named: "搜索灰"), for: UIControlState.normal)
-        searchBtn.setTitle("搜索医生", for: UIControlState.normal)
-        searchBtn.setTitleColor(kLightTextColor, for: UIControlState.normal)
+        searchBtn.setImage(UIImage.init(named: "搜索灰"), for: .normal)
+        searchBtn.setTitle("搜索医生", for: .normal)
+        searchBtn.setTitleColor(kLightTextColor, for: .normal)
         searchBtn.titleLabel?.font = UIFont.init(name: kReguleFont, size: 14)
         searchBtn.layer.cornerRadius = 15
         searchBtn.layer.borderColor = kLightTextColor.cgColor
         searchBtn.layer.borderWidth = 1
         searchBtn.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 10)
-        searchBtn.addTarget(self, action: #selector(ConsultViewController.searchVC), for: .touchUpInside)
+        searchBtn.addTarget(self, action: #selector(searchVC), for: .touchUpInside)
         
         contV.addSubview(searchBtn)
 
@@ -74,14 +74,14 @@ class ConsultViewController: BaseViewController, UITableViewDelegate, UITableVie
         rightBtn.setTitle("咨询记录", for: .normal)
         rightBtn.titleLabel?.font = UIFont.init(name: kReguleFont, size: 14)
         rightBtn.setTitleColor(kLightTextColor, for: .normal)
-        rightBtn.addTarget(self, action: #selector(ConsultViewController.consultRecord), for: .touchUpInside)
+        rightBtn.addTarget(self, action: #selector(consultRecord), for: .touchUpInside)
         
         contV.addSubview(rightBtn)
         
         self.navigationItem.titleView = contV
     }
     
-    func searchVC(){
+    @objc func searchVC(){
         self.navigationController?.pushViewController(SearchDocViewController(), animated: true)
     }
     
@@ -90,7 +90,7 @@ class ConsultViewController: BaseViewController, UITableViewDelegate, UITableVie
     }
 
 
-    func requestData(){
+    @objc func requestData(){
         guard hasNext == true else{
             self.tableView.mj_footer.endRefreshing()
             HCShowError(info: "没有更多信息")
@@ -133,7 +133,7 @@ class ConsultViewController: BaseViewController, UITableViewDelegate, UITableVie
     }
 
 
-    func consultRecord(){
+    @objc func consultRecord(){
         self.navigationController?.pushViewController(ConsultRecordViewController(), animated: true)
     }
 

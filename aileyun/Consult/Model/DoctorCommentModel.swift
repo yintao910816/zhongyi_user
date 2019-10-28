@@ -7,19 +7,24 @@
 //
 
 import UIKit
+import HandyJSON
 
-class DoctorCommentModel: NSObject {
+class DoctorCommentModel: NSObject, HandyJSON {
     
     var discribe : String?
     var name : String?
     var other : String?
     
     // MARK:- 构造函数
-    init(_ dict : [String : Any]) {
-        super.init()
+//    init(_ dict : [String : Any]) {
+//        super.init()
+//
+//        setValuesForKeys(dict)
+//    }
+//    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
+
+    required override init() {
         
-        setValuesForKeys(dict)
     }
-    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
 
 }

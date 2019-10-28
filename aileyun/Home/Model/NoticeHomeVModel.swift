@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import HandyJSON
 
-class NoticeHomeVModel: NSObject {
+class NoticeHomeVModel: NSObject, HandyJSON {
     
     
     var content : String = "您有新的通知提醒，点击查看详情"
@@ -24,10 +25,14 @@ class NoticeHomeVModel: NSObject {
 
     
     // MARK:- 构造函数
-    init(_ dict : [String : Any]) {
-        super.init()
+//    init(_ dict : [String : Any]) {
+//        super.init()
+//
+//        setValuesForKeys(dict)
+//    }
+//    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
+    
+    required override init() {
         
-        setValuesForKeys(dict)
     }
-    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
 }

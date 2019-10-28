@@ -45,7 +45,7 @@ class BindedViewController: UIViewController {
     
     lazy var unbindBtn : UIButton = {
         let b = UIButton()
-        b.setTitle("解除绑定", for: UIControlState.normal)
+        b.setTitle("解除绑定", for: .normal)
         b.setTitleColor(UIColor.white, for: .normal)
         b.backgroundColor = kDefaultThemeColor
         b.layer.cornerRadius = 5
@@ -80,7 +80,7 @@ class BindedViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.tintColor = UIColor.white
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
 
@@ -214,11 +214,11 @@ class BindedViewController: UIViewController {
             make.height.equalTo(40)
         }
         
-        unbindBtn.addTarget(self, action: #selector(BindedViewController.abandonBind), for: UIControlEvents.touchUpInside)
+        unbindBtn.addTarget(self, action: #selector(abandonBind), for: .touchUpInside)
     }
     
     
-    func abandonBind(){
+    @objc func abandonBind(){
         let alertController = UIAlertController(title: "提醒",
                                                 message: "如果不绑定，则无法使用预约挂号、检验报告等核心功能", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "取消", style: .default, handler: {(action)->() in

@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import HandyJSON
 
-class HCUserInfoModel: NSObject {
+class HCUserInfoModel: NSObject, HandyJSON {
 
     
     var bannedTime : String?
@@ -41,13 +42,17 @@ class HCUserInfoModel: NSObject {
     var BBSToken : String?
     
     
-    convenience init(_ dic : [String : Any]) {
-        self.init()
-        setValuesForKeys(dic)
-    }
+//    convenience init(_ dic : [String : Any]) {
+//        self.init()
+//        setValuesForKeys(dic)
+//    }
+//
+//    override func setValue(_ value: Any?, forUndefinedKey key: String) {
+//        //
+//    }
     
-    override func setValue(_ value: Any?, forUndefinedKey key: String) {
-        //
+    required override init() {
+        
     }
-    
+
 }

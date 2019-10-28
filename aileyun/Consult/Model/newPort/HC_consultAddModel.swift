@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import HandyJSON
 
-class HC_consultAddModel: NSObject {
+class HC_consultAddModel: NSObject, HandyJSON {
     
     var content : String?
     var patientName : String?
@@ -26,11 +27,14 @@ class HC_consultAddModel: NSObject {
 
     
     // MARK:- 构造函数
-    init(_ dict : [String : Any]) {
-        super.init()
-        
-        setValuesForKeys(dict)
-    }
-    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
+//    init(_ dict : [String : Any]) {
+//        super.init()
+//
+//        setValuesForKeys(dict)
+//    }
+//    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
 
+    required override init() {
+        
+    }
 }

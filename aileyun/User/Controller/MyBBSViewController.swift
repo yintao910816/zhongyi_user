@@ -134,13 +134,13 @@ class MyBBSViewController: BaseViewController {
         segmentedV.tintColor = kDefaultThemeColor
         segmentedV.selectedSegmentIndex = 0
         
-        segmentedV.addTarget(self, action: #selector(MyBBSViewController.segmentedAction), for: UIControlEvents.valueChanged)
+        segmentedV.addTarget(self, action: #selector(MyBBSViewController.segmentedAction), for: .valueChanged)
         
         self.navigationItem.titleView = segmentedV
     }
     
     
-    func segmentedAction(sender : UISegmentedControl){
+    @objc func segmentedAction(sender : UISegmentedControl){
         if segmentIndex != CGFloat(sender.selectedSegmentIndex) {
             segmentIndex = CGFloat(sender.selectedSegmentIndex)
         }
@@ -233,7 +233,7 @@ extension MyBBSViewController : UIWebViewDelegate {
         
     }
     
-    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
         HCPrint(message: "shouldStartLoadWith")
         return true
     }

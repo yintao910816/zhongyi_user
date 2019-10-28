@@ -33,7 +33,7 @@ class MessageDetailViewController: BaseViewController {
         t.dataSource = self
         t.delegate = self
         t.tableFooterView = UIView()
-        t.rowHeight = UITableViewAutomaticDimension
+        t.rowHeight = UITableView.automaticDimension
         t.estimatedRowHeight = 80
         self.view.addSubview(t)
         return t
@@ -87,7 +87,7 @@ class MessageDetailViewController: BaseViewController {
         deleteBtn.addTarget(self, action: #selector(MessageDetailViewController.deleteAction), for: .touchUpInside)
     }
     
-    func selectAllAction(){
+    @objc func selectAllAction(){
         let count = messageArr.count
         for i in 0..<count{
             let index = IndexPath.init(row: i, section: 0)
@@ -95,7 +95,7 @@ class MessageDetailViewController: BaseViewController {
         }
     }
     
-    func deleteAction(){
+    @objc func deleteAction(){
         let selecteRows = tableV.indexPathsForSelectedRows
         guard selecteRows != nil else {
             HCShowError(info: "请选择需要删除的消息")
@@ -113,7 +113,7 @@ class MessageDetailViewController: BaseViewController {
         deleteMessage(ids: ids)
     }
     
-    func editAction(sender : UIButton){
+    @objc func editAction(sender : UIButton){
         sender.isSelected = !sender.isSelected
         
         if sender.isSelected {
@@ -137,7 +137,7 @@ class MessageDetailViewController: BaseViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func requestData(){
+    @objc func requestData(){
         guard type != nil else{return}
         guard hasNext == true else{
             return

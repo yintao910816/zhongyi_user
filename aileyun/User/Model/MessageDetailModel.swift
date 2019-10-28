@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import HandyJSON
 
-class MessageDetailModel: NSObject {
+class MessageDetailModel: NSObject, HandyJSON {
     
     var readStatus : NSNumber?
     var content : String?
@@ -28,12 +29,15 @@ class MessageDetailModel: NSObject {
 
     
     // MARK:- 构造函数
-    init(_ dict : [String : Any]) {
-        super.init()
-        
-        setValuesForKeys(dict)
-    }
-    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
+//    init(_ dict : [String : Any]) {
+//        super.init()
+//
+//        setValuesForKeys(dict)
+//    }
+//    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
 
+    required override init() {
+        
+    }
 
 }

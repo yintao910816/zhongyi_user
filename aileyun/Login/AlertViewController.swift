@@ -104,7 +104,7 @@ class AlertViewController: UIViewController {
     }
     
     
-    func click(){
+    @objc func click(){
         HCPrint(message: "click")
     }
 

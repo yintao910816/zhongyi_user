@@ -37,7 +37,7 @@ class PhotoPickCollectionViewCell: UICollectionViewCell {
             make.right.top.equalTo(self)
             make.width.height.equalTo(20)
         }
-        deleteBtn.addTarget(self, action: #selector(PhotoPickCollectionViewCell.deleteAction), for: UIControlEvents.touchUpInside)
+        deleteBtn.addTarget(self, action: #selector(PhotoPickCollectionViewCell.deleteAction), for: .touchUpInside)
         deleteBtn.backgroundColor = UIColor.red
         deleteBtn.setTitle("-", for: .normal)
         deleteBtn.titleLabel?.font = UIFont.init(name: kBoldFont, size: 15)
@@ -46,21 +46,21 @@ class PhotoPickCollectionViewCell: UICollectionViewCell {
         
         self.addSubview(pickerBtn)
         pickerBtn.frame = self.bounds
-        pickerBtn.setImage(UIImage.init(named: "加号"), for: UIControlState.normal)
-        pickerBtn.addTarget(self, action: #selector(PhotoPickCollectionViewCell.pickerAction), for: UIControlEvents.touchUpInside)
+        pickerBtn.setImage(UIImage.init(named: "加号"), for: .normal)
+        pickerBtn.addTarget(self, action: #selector(PhotoPickCollectionViewCell.pickerAction), for: .touchUpInside)
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    func deleteAction(){
+    @objc func deleteAction(){
         if deleteBlock != nil {
             deleteBlock!()
         }
     }
     
-    func pickerAction(){
+    @objc func pickerAction(){
         if pickBlock != nil{
             pickBlock!()
         }

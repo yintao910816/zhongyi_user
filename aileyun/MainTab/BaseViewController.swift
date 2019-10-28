@@ -34,7 +34,7 @@ class BaseViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.tintColor = kLightTextColor
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : kLightTextColor]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : kLightTextColor]
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
 

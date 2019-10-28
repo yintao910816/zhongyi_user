@@ -60,23 +60,23 @@ class ConfirmOrderViewController: BaseViewController {
         
         initUI()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(ConfirmOrderViewController.checkAlipayResult), name: NSNotification.Name.init(ALIPAY_SUCCESS), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(ConfirmOrderViewController.checkWeixinPayResult), name: NSNotification.Name.init(WEIXIN_SUCCESS), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(ConfirmOrderViewController.showPayFail), name: NSNotification.Name.init(PAY_FAIL), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(checkAlipayResult), name: NSNotification.Name.init(ALIPAY_SUCCESS), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(checkWeixinPayResult), name: NSNotification.Name.init(WEIXIN_SUCCESS), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(showPayFail), name: NSNotification.Name.init(PAY_FAIL), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let leftItem = UIBarButtonItem(image: UIImage(named: "返回灰"), style: .plain, target: self, action: #selector(ConfirmOrderViewController.goToRecordVC))
+        let leftItem = UIBarButtonItem(image: UIImage(named: "返回灰"), style: .plain, target: self, action: #selector(goToRecordVC))
         self.navigationItem.leftBarButtonItem = leftItem
     }
     
-    func goToRecordVC(){
+    @objc func goToRecordVC(){
         self.navigationController?.popToRootViewController(animated: true)
     }
 
-    func checkAlipayResult(note : Notification){
+    @objc func checkAlipayResult(note : Notification){
         SVProgressHUD.show(withStatus: "正在查询支付结果...")
         
         let tradeNo = note.userInfo?["tradeNo"] as! String
@@ -90,7 +90,7 @@ class ConfirmOrderViewController: BaseViewController {
         }
     }
     
-    func checkWeixinPayResult(){
+    @objc func checkWeixinPayResult(){
         SVProgressHUD.show(withStatus: "正在查询支付结果...")
         
         HttpRequestManager.shareIntance.checkWeixinPayResult(prepayId: weixinPrepayId!) { (success, msg) in
@@ -103,7 +103,7 @@ class ConfirmOrderViewController: BaseViewController {
         }
     }
     
-    func showPayFail(){
+    @objc func showPayFail(){
         HCShowError(info: "支付不成功")
     }
 
@@ -170,7 +170,7 @@ class ConfirmOrderViewController: BaseViewController {
             make.width.height.equalTo(30)
         }
         alipayImgV.image = UIImage.init(named: "支付宝")
-        alipayImgV.contentMode = UIViewContentMode.scaleAspectFit
+        alipayImgV.contentMode = .scaleAspectFit
         
         let alipayL = UILabel()
         containerV.addSubview(alipayL)
@@ -190,10 +190,10 @@ class ConfirmOrderViewController: BaseViewController {
             make.right.equalTo(containerV).offset(-20)
             make.width.height.equalTo(30)
         }
-        alipayBtn.setImage(UIImage.init(named: "未选中"), for: UIControlState.normal)
-        alipayBtn.setImage(UIImage.init(named: "选中"), for: UIControlState.selected)
+        alipayBtn.setImage(UIImage.init(named: "未选中"), for: .normal)
+        alipayBtn.setImage(UIImage.init(named: "选中"), for: .selected)
         alipayBtn.tag = 0
-        alipayBtn.addTarget(self, action: #selector(ConfirmOrderViewController.chooseTool), for: UIControlEvents.touchUpInside)
+        alipayBtn.addTarget(self, action: #selector(chooseTool), for: .touchUpInside)
         
         let diviV = UIView()
         containerV.addSubview(diviV)
@@ -213,7 +213,7 @@ class ConfirmOrderViewController: BaseViewController {
             make.top.equalTo(alipayImgV.snp.bottom).offset(20)
         }
         weixinImgV.image = UIImage.init(named: "微信支付")
-        weixinImgV.contentMode = UIViewContentMode.scaleAspectFit
+        weixinImgV.contentMode = .scaleAspectFit
         
         let weixinL = UILabel()
         containerV.addSubview(weixinL)
@@ -233,10 +233,10 @@ class ConfirmOrderViewController: BaseViewController {
             make.right.equalTo(containerV).offset(-20)
             make.width.height.equalTo(30)
         }
-        weixinBtn.setImage(UIImage.init(named: "未选中"), for: UIControlState.normal)
-        weixinBtn.setImage(UIImage.init(named: "选中"), for: UIControlState.selected)
+        weixinBtn.setImage(UIImage.init(named: "未选中"), for: .normal)
+        weixinBtn.setImage(UIImage.init(named: "选中"), for: .selected)
         weixinBtn.tag = 1
-        weixinBtn.addTarget(self, action: #selector(ConfirmOrderViewController.chooseTool), for: UIControlEvents.touchUpInside)
+        weixinBtn.addTarget(self, action: #selector(chooseTool), for: UIControl.Event.touchUpInside)
         
         let divisionV = UIView()
         containerV.addSubview(divisionV)
@@ -252,19 +252,19 @@ class ConfirmOrderViewController: BaseViewController {
             make.height.equalTo(48)
             make.bottom.equalTo(self.view).offset(-space.bottomSpace)
         }
-        payBtn.setTitle("确认支付", for: UIControlState.normal)
+        payBtn.setTitle("确认支付", for: .normal)
         payBtn.titleLabel?.font = UIFont.init(name: kBoldFont, size: 16)
         payBtn.backgroundColor = kDefaultThemeColor
         
-        payBtn.addTarget(self, action: #selector(ConfirmOrderViewController.pay), for: UIControlEvents.touchUpInside)
+        payBtn.addTarget(self, action: #selector(pay), for: .touchUpInside)
     }
     
 
-    func chooseTool(btn : UIButton){
+    @objc func chooseTool(btn : UIButton){
         defaultTool = btn.tag
     }
     
-    func pay(){
+    @objc func pay(){
         
         let consultS = String.init(format: "%@", consultId!)
         if defaultTool == 0 {

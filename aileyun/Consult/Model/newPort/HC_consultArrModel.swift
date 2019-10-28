@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import HandyJSON
 
-class HC_consultArrModel: NSObject {
+class HC_consultArrModel: NSObject, HandyJSON {
     
     var doctorId : NSNumber?
     var imageList : String?
@@ -19,7 +20,7 @@ class HC_consultArrModel: NSObject {
     var content : String?
     var feeStatus : NSNumber?
     var doctorName : String?
-    var replyList : NSArray?
+    var replyList : [HC_consultListModel] = []
     var currentStatus : NSNumber?
     
     var reviewStatus : NSNumber?  // 0 未评价
@@ -28,8 +29,11 @@ class HC_consultArrModel: NSObject {
     var createTime : NSNumber?
     var docPrice : String?
     
-    override static func mj_objectClassInArray() -> [AnyHashable : Any]! {
-        return ["replyList" : HC_consultListModel.classForCoder()]
-    }
+//    override static func mj_objectClassInArray() -> [AnyHashable : Any]! {
+//        return ["replyList" : HC_consultListModel.classForCoder()]
+//    }
 
+    required override init() {
+        
+    }
 }

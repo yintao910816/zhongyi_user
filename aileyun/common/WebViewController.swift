@@ -81,7 +81,7 @@ class WebViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let rightItem = UIBarButtonItem.init(image: UIImage.init(named: "分类"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(WebViewController.menu))
+        let rightItem = UIBarButtonItem.init(image: UIImage.init(named: "分类"), style: .plain, target: self, action: #selector(menu))
         self.navigationItem.rightBarButtonItem = rightItem
     }
     
@@ -89,14 +89,14 @@ class WebViewController: BaseViewController {
         super.viewWillAppear(animated)
         
         if self.url!.contains("postTopic.html"){
-            let rightItem = UIBarButtonItem.init(title: "发表", style: .plain, target: self, action: #selector(WebViewController.publish))
+            let rightItem = UIBarButtonItem.init(title: "发表", style: .plain, target: self, action: #selector(publish))
             self.navigationItem.rightBarButtonItem = rightItem
         }
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        let leftItem = UIBarButtonItem(image: UIImage(named: "返回灰"), style: .plain, target: self, action: #selector(WebViewController.popViewController))
+        let leftItem = UIBarButtonItem(image: UIImage(named: "返回灰"), style: .plain, target: self, action: #selector(popViewController))
         self.navigationItem.leftBarButtonItem = leftItem
     }
     
@@ -106,7 +106,7 @@ class WebViewController: BaseViewController {
         webView.loadRequest(request)
     }
 
-    func popViewController(){
+    @objc func popViewController(){
         if webView.canGoBack{
             webView.goBack()
         }else{
@@ -116,7 +116,7 @@ class WebViewController: BaseViewController {
     }
     
     //收藏帖子
-    func collect(){
+    @objc func collect(){
         _ = context?.evaluateScript("wyPtd.collection()")
     }
     
@@ -134,7 +134,7 @@ class WebViewController: BaseViewController {
         
     
     //发表
-    func publish(){
+    @objc func publish(){
         guard isPublishClick == false else{
             HCShowInfo(info: "正在处理")
             return
@@ -149,7 +149,7 @@ class WebViewController: BaseViewController {
         }
     }
     
-    func menu(){
+    @objc func menu(){
         self.hidesBottomBarWhenPushed = true
         let menuVC = WebMenuViewController()
         menuVC.naviVC = self.navigationController
@@ -217,7 +217,7 @@ class WebViewController: BaseViewController {
 }
 
 extension WebViewController : UIWebViewDelegate{
-    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool{
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool{
         
         let s = request.url?.absoluteString
         if s == "app://reload"{

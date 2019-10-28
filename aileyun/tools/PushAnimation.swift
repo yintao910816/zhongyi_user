@@ -61,7 +61,7 @@ extension PushAnimation : UIViewControllerAnimatedTransitioning {
         
         let imageV = UIImageView.init(frame: CGRect.init(x: 0, y: 0, width: SCREEN_WIDTH, height: SCREEN_HEIGHT))
         imageV.image = image
-        imageV.contentMode = UIViewContentMode.scaleAspectFit
+        imageV.contentMode = .scaleAspectFit
         
         containerV?.addSubview(imageV)
         imageV.center = itemCenter!
@@ -76,7 +76,7 @@ extension PushAnimation : UIViewControllerAnimatedTransitioning {
         toV?.alpha = 0.01
         
         let duration = transitionDuration(using: transContext)
-        UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: UIViewAnimationOptions.curveLinear, animations: {[weak self]()in
+        UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: UIView.AnimationOptions.curveLinear, animations: {[weak self]()in
             imageV.transform = CGAffineTransform.identity
             imageV.center = finalCenter!
             self?.fromV?.alpha = 0.01

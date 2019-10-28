@@ -40,65 +40,65 @@ class ConsultFootView: UIView {
         priceL.textAlignment = NSTextAlignment.right
         
         self.addSubview(payBtn)
-        payBtn.setTitle("马上支付", for: UIControlState.normal)
-        payBtn.setTitleColor(kDefaultThemeColor, for: UIControlState.normal)
+        payBtn.setTitle("马上支付", for: .normal)
+        payBtn.setTitleColor(kDefaultThemeColor, for: .normal)
         payBtn.titleLabel?.font = UIFont.init(name: kReguleFont, size: 15)
         payBtn.layer.cornerRadius = 15
         payBtn.layer.borderWidth = 1
         payBtn.layer.borderColor = kDefaultThemeColor.cgColor
         payBtn.tag = 101
-        payBtn.addTarget(self, action: #selector(ConsultFootView.btnClick), for: UIControlEvents.touchUpInside)
+        payBtn.addTarget(self, action: #selector(ConsultFootView.btnClick), for: .touchUpInside)
         
         self.addSubview(modifyBtn)
-        modifyBtn.setTitle("修改咨询", for: UIControlState.normal)
-        modifyBtn.setTitleColor(kDefaultThemeColor, for: UIControlState.normal)
+        modifyBtn.setTitle("修改咨询", for: .normal)
+        modifyBtn.setTitleColor(kDefaultThemeColor, for: .normal)
         modifyBtn.titleLabel?.font = UIFont.init(name: kReguleFont, size: 15)
         modifyBtn.layer.cornerRadius = 15
         modifyBtn.layer.borderWidth = 1
         modifyBtn.layer.borderColor = kDefaultThemeColor.cgColor
         modifyBtn.tag = 102
-        modifyBtn.addTarget(self, action: #selector(ConsultFootView.btnClick), for: UIControlEvents.touchUpInside)
+        modifyBtn.addTarget(self, action: #selector(ConsultFootView.btnClick), for: .touchUpInside)
         
         self.addSubview(deleteBtn)
-        deleteBtn.setTitle("删除咨询", for: UIControlState.normal)
-        deleteBtn.setTitleColor(kDefaultThemeColor, for: UIControlState.normal)
+        deleteBtn.setTitle("删除咨询", for: .normal)
+        deleteBtn.setTitleColor(kDefaultThemeColor, for: .normal)
         deleteBtn.titleLabel?.font = UIFont.init(name: kReguleFont, size: 15)
         deleteBtn.layer.cornerRadius = 15
         deleteBtn.layer.borderWidth = 1
         deleteBtn.layer.borderColor = kDefaultThemeColor.cgColor
         deleteBtn.tag = 106
-        deleteBtn.addTarget(self, action: #selector(ConsultFootView.btnClick), for: UIControlEvents.touchUpInside)
+        deleteBtn.addTarget(self, action: #selector(btnClick), for: .touchUpInside)
 
 
         self.addSubview(reConsultBtn)
-        reConsultBtn.setTitle("再次咨询", for: UIControlState.normal)
-        reConsultBtn.setTitleColor(kDefaultThemeColor, for: UIControlState.normal)
+        reConsultBtn.setTitle("再次咨询", for: .normal)
+        reConsultBtn.setTitleColor(kDefaultThemeColor, for: .normal)
         reConsultBtn.titleLabel?.font = UIFont.init(name: kReguleFont, size: 15)
         reConsultBtn.layer.cornerRadius = 15
         reConsultBtn.layer.borderWidth = 1
         reConsultBtn.layer.borderColor = kDefaultThemeColor.cgColor
         reConsultBtn.tag = 103
-        reConsultBtn.addTarget(self, action: #selector(ConsultFootView.btnClick), for: UIControlEvents.touchUpInside)
+        reConsultBtn.addTarget(self, action: #selector(ConsultFootView.btnClick), for: .touchUpInside)
 
         self.addSubview(commmentBtn)
-        commmentBtn.setTitle("马上评价", for: UIControlState.normal)
-        commmentBtn.setTitleColor(kDefaultThemeColor, for: UIControlState.normal)
+        commmentBtn.setTitle("马上评价", for: .normal)
+        commmentBtn.setTitleColor(kDefaultThemeColor, for: .normal)
         commmentBtn.titleLabel?.font = UIFont.init(name: kReguleFont, size: 15)
         commmentBtn.layer.cornerRadius = 15
         commmentBtn.layer.borderWidth = 1
         commmentBtn.layer.borderColor = kDefaultThemeColor.cgColor
         commmentBtn.tag = 104
-        commmentBtn.addTarget(self, action: #selector(ConsultFootView.btnClick), for: UIControlEvents.touchUpInside)
+        commmentBtn.addTarget(self, action: #selector(ConsultFootView.btnClick), for: .touchUpInside)
 
         self.addSubview(checkCommentBtn)
-        checkCommentBtn.setTitle("查看评价", for: UIControlState.normal)
-        checkCommentBtn.setTitleColor(kDefaultThemeColor, for: UIControlState.normal)
+        checkCommentBtn.setTitle("查看评价", for: .normal)
+        checkCommentBtn.setTitleColor(kDefaultThemeColor, for: .normal)
         checkCommentBtn.titleLabel?.font = UIFont.init(name: kReguleFont, size: 15)
         checkCommentBtn.layer.cornerRadius = 15
         checkCommentBtn.layer.borderWidth = 1
         checkCommentBtn.layer.borderColor = kDefaultThemeColor.cgColor
         checkCommentBtn.tag = 105
-        checkCommentBtn.addTarget(self, action: #selector(ConsultFootView.btnClick), for: UIControlEvents.touchUpInside)
+        checkCommentBtn.addTarget(self, action: #selector(ConsultFootView.btnClick), for: .touchUpInside)
         
         self.addSubview(divisionV)
         divisionV.backgroundColor = kdivisionColor
@@ -139,7 +139,7 @@ class ConsultFootView: UIView {
         }
     }
     
-    func btnClick(btn : UIButton){
+    @objc func btnClick(btn : UIButton){
         btnBlock!(btn.tag)
     }
     

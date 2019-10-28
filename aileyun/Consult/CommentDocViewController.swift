@@ -73,7 +73,7 @@ class CommentDocViewController: BaseViewController {
     
     lazy var commitCommentBtn : UIButton = {
         let b = UIButton()
-        b.setTitle("提交评论", for: UIControlState.normal)
+        b.setTitle("提交评论", for: .normal)
         b.backgroundColor = kDefaultThemeColor
         b.layer.cornerRadius = 5
         return b
@@ -107,7 +107,7 @@ class CommentDocViewController: BaseViewController {
         containV.backgroundColor = UIColor.white
         self.view.addSubview(containV)
         
-        let tapG = UITapGestureRecognizer.init(target: self, action: #selector(CommentDocViewController.editEnd))
+        let tapG = UITapGestureRecognizer.init(target: self, action: #selector(editEnd))
         containV.addGestureRecognizer(tapG)
         
         containV.addSubview(titleL)
@@ -143,14 +143,14 @@ class CommentDocViewController: BaseViewController {
             make.height.equalTo(35)
         }
         
-        commitCommentBtn.addTarget(self, action: #selector(CommentDocViewController.commitComment), for: UIControlEvents.touchUpInside)
+        commitCommentBtn.addTarget(self, action: #selector(commitComment), for: .touchUpInside)
     }
     
-    func editEnd(){
+    @objc func editEnd(){
         self.view.endEditing(true)
     }
     
-    func commitComment(){
+    @objc func commitComment(){
         
         SVProgressHUD.show()
         

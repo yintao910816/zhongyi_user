@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import HandyJSON
 
-class TreasuryTypeModel: NSObject {
+class TreasuryTypeModel: NSObject, HandyJSON {
 
     var name : String?
     var value : String?
@@ -16,12 +17,12 @@ class TreasuryTypeModel: NSObject {
     var order : NSNumber?
     
     // MARK:- 构造函数
-    init(_ dict : [String : Any]) {
-        super.init()
-        
-        setValuesForKeys(dict)
-    }
-    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
+//    init(_ dict : [String : Any]) {
+//        super.init()
+//
+//        setValuesForKeys(dict)
+//    }
+//    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
     
     
     //  + "\()"
@@ -31,4 +32,7 @@ class TreasuryTypeModel: NSObject {
         }
     }
 
+    required override init() {
+        
+    }
 }

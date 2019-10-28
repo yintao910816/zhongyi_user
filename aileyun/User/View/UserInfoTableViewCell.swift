@@ -15,7 +15,7 @@ class UserInfoTableViewCell: UITableViewCell {
     let imgV = UIImageView()
     let headImgV = UIImageView()
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
         
@@ -36,7 +36,7 @@ class UserInfoTableViewCell: UITableViewCell {
             make.centerY.height.equalTo(self)
             make.width.equalTo(20)
         }
-        imgV.contentMode = UIViewContentMode.right
+        imgV.contentMode = .right
         imgV.image = UIImage.init(named: "箭头")
         
         self.addSubview(contentL)
@@ -57,7 +57,7 @@ class UserInfoTableViewCell: UITableViewCell {
         }
         headImgV.layer.cornerRadius = 20
         headImgV.clipsToBounds = true
-        headImgV.contentMode = UIViewContentMode.scaleAspectFill
+        headImgV.contentMode = .scaleAspectFill
     }
 
     

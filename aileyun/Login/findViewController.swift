@@ -103,12 +103,12 @@ class findViewController: UIViewController {
             make.width.equalTo(90)
             make.height.equalTo(30)
         }
-        verifyBtn.setTitle("获取验证码", for: UIControlState.normal)
+        verifyBtn.setTitle("获取验证码", for: .normal)
         verifyBtn.titleLabel?.font = UIFont.init(name: kReguleFont, size: 13)
         verifyBtn.backgroundColor = kDefaultThemeColor
         verifyBtn.layer.cornerRadius = 5
         
-        verifyBtn.addTarget(self, action: #selector(findViewController.startCount), for: UIControlEvents.touchUpInside)
+        verifyBtn.addTarget(self, action: #selector(startCount), for: .touchUpInside)
         
         
         containerV.addSubview(verifyTF)
@@ -154,9 +154,9 @@ class findViewController: UIViewController {
             make.centerY.equalTo(passwordL)
             make.width.height.equalTo(30)
         }
-        seeBtn.setImage(UIImage.init(named: "显示"), for: UIControlState.normal)
+        seeBtn.setImage(UIImage.init(named: "显示"), for: .normal)
         
-        seeBtn.addTarget(self, action: #selector(findViewController.passwordStyle), for: UIControlEvents.touchUpInside)
+        seeBtn.addTarget(self, action: #selector(findViewController.passwordStyle), for: .touchUpInside)
         
         
         containerV.addSubview(passwordTF)
@@ -191,11 +191,11 @@ class findViewController: UIViewController {
             make.right.equalTo(containerV).offset(-40)
             make.height.equalTo(40)
         }
-        resetPasswordBtn.setTitle("重置密码", for: UIControlState.normal)
+        resetPasswordBtn.setTitle("重置密码", for: .normal)
         resetPasswordBtn.layer.cornerRadius = 10
         resetPasswordBtn.backgroundColor = kDefaultThemeColor
         
-        resetPasswordBtn.addTarget(self, action: #selector(findViewController.resetPassword), for: UIControlEvents.touchUpInside)
+        resetPasswordBtn.addTarget(self, action: #selector(resetPassword), for: .touchUpInside)
         
     }
 
@@ -208,26 +208,27 @@ class findViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func startCount(){
+    @objc func startCount(){
         guard checkIsPhone(cellphoneTF.text!) else{
             HCShowError(info: "请输入正确的手机号码！")
             return
         }
         SVProgressHUD.show(withStatus: "获取中...")
         HttpRequestManager.shareIntance.HC_validateCode(phone: cellphoneTF.text!, callback: { [weak self](success, message) in
+            guard let strongSelf = self else { return }
             SVProgressHUD.dismiss()
             if success {
                 HCShowInfo(info: "获取验证码成功！")
-                self?.count = 0
+                strongSelf.count = 0
                 
-                self?.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(RegisterViewController.showSecond), userInfo: nil, repeats: true)
+                strongSelf.timer = Timer.scheduledTimer(timeInterval: 1, target: strongSelf, selector: #selector(findViewController.showSecond), userInfo: nil, repeats: true)
             }else{
                 SVProgressHUD.showError(withStatus: message)
             }
         })
     }
     
-    func showSecond(){
+    @objc func showSecond(){
         count = count + 1
         if count == KMaxSeconds {
             resetCodeBtn()
@@ -235,7 +236,7 @@ class findViewController: UIViewController {
         }else{
             let showString = String.init(format: "%ds重新获取", KMaxSeconds - count)
             verifyBtn.isEnabled = false
-            verifyBtn.setTitle(showString, for: UIControlState.normal)
+            verifyBtn.setTitle(showString, for: .normal)
             verifyBtn.backgroundColor = kLightTextColor
         }
     }
@@ -246,20 +247,20 @@ class findViewController: UIViewController {
     
     func resetCodeBtn(){
         verifyBtn.isEnabled = true
-        verifyBtn.setTitle("获取验证码", for: UIControlState.normal)
+        verifyBtn.setTitle("获取验证码", for: .normal)
         verifyBtn.backgroundColor = kDefaultThemeColor
     }
     
-    func passwordStyle(){
+    @objc func passwordStyle(){
         passwordTF.isSecureTextEntry = passwordTF.isSecureTextEntry ? false : true
         if passwordTF.isSecureTextEntry {
-            seeBtn.setImage(UIImage.init(named: "隐藏"), for: UIControlState.normal)
+            seeBtn.setImage(UIImage.init(named: "隐藏"), for: .normal)
         }else{
-            seeBtn.setImage(UIImage.init(named: "显示"), for: UIControlState.normal)
+            seeBtn.setImage(UIImage.init(named: "显示"), for: .normal)
         }
     }
     
-    func resetPassword(){
+    @objc func resetPassword(){
         guard cellphoneTF.text != "" else {
             HCShowError(info: "请输入手机号码！")
             return

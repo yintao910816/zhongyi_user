@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import HandyJSON
 
-class UserInfoModel: NSObject {
+class UserInfoModel: NSObject, HandyJSON {
     
     var city : NSString?
     var headimgurl : NSString?
@@ -27,13 +28,17 @@ class UserInfoModel: NSObject {
     var password : NSString?
     
     
-    convenience init(_ dic : [String : Any]) {
-        self.init()
-        setValuesForKeys(dic)
-    }
-    
-    override func setValue(_ value: Any?, forUndefinedKey key: String) {
-        //
+//    convenience init(_ dic : [String : Any]) {
+//        self.init()
+//        setValuesForKeys(dic)
+//    }
+//
+//    override func setValue(_ value: Any?, forUndefinedKey key: String) {
+//        //
+//    }
+
+    required override init() {
+        
     }
 
 }

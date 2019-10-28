@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import HandyJSON
 
-class weixinPrepayModel: NSObject {
+class weixinPrepayModel: NSObject, HandyJSON {
     
     var appid : String?
     var partnerid : String?
@@ -19,12 +20,15 @@ class weixinPrepayModel: NSObject {
     var packageValue : String?
     
     // MARK:- 构造函数
-    init(_ dict : [String : Any]) {
-        super.init()
-        
-        setValuesForKeys(dict)
-    }
-    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
+//    init(_ dict : [String : Any]) {
+//        super.init()
+//
+//        setValuesForKeys(dict)
+//    }
+//    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
 
+    required override init() {
+        
+    }
 
 }

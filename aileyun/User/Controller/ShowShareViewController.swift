@@ -54,7 +54,7 @@ class ShowShareViewController: BaseViewController, QQApiInterfaceDelegate{
             make.width.height.equalTo(150)
         }
         imgV.image = UIImage.init(named: qrcodeName)
-        imgV.contentMode = UIViewContentMode.scaleAspectFit
+        imgV.contentMode = .scaleAspectFit
         
         
         self.view.addSubview(bagV)
@@ -78,7 +78,7 @@ class ShowShareViewController: BaseViewController, QQApiInterfaceDelegate{
         QQBtn.imgV.image = UIImage.init(named: "QQ01")
         QQBtn.titleL.text = "QQ"
         QQBtn.tag = 0
-        QQBtn.addTarget(self, action: #selector(QQshare), for: UIControlEvents.touchUpInside)
+        QQBtn.addTarget(self, action: #selector(QQshare), for: .touchUpInside)
         
         containerV.addSubview(QQzoneBtn)
         QQzoneBtn.snp.updateConstraints { (make) in
@@ -90,7 +90,7 @@ class ShowShareViewController: BaseViewController, QQApiInterfaceDelegate{
         QQzoneBtn.imgV.image = UIImage.init(named: "空间")
         QQzoneBtn.titleL.text = "QQ空间"
         QQzoneBtn.tag = 1
-        QQzoneBtn.addTarget(self, action: #selector(QQshare), for: UIControlEvents.touchUpInside)
+        QQzoneBtn.addTarget(self, action: #selector(QQshare), for: .touchUpInside)
         
         containerV.addSubview(WeiXinBtn)
         WeiXinBtn.snp.updateConstraints { (make) in
@@ -102,7 +102,7 @@ class ShowShareViewController: BaseViewController, QQApiInterfaceDelegate{
         WeiXinBtn.imgV.image = UIImage.init(named: "微信01")
         WeiXinBtn.titleL.text = "微信"
         WeiXinBtn.tag = 2
-        WeiXinBtn.addTarget(self, action: #selector(WeiXinShare), for: UIControlEvents.touchUpInside)
+        WeiXinBtn.addTarget(self, action: #selector(WeiXinShare), for: .touchUpInside)
         
         containerV.addSubview(WXFriendsBtn)
         WXFriendsBtn.snp.updateConstraints { (make) in
@@ -114,7 +114,7 @@ class ShowShareViewController: BaseViewController, QQApiInterfaceDelegate{
         WXFriendsBtn.imgV.image = UIImage.init(named: "朋友圈")
         WXFriendsBtn.titleL.text = "朋友圈"
         WXFriendsBtn.tag = 3
-        WXFriendsBtn.addTarget(self, action: #selector(WeiXinShare), for: UIControlEvents.touchUpInside)
+        WXFriendsBtn.addTarget(self, action: #selector(WeiXinShare), for: .touchUpInside)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -127,7 +127,7 @@ class ShowShareViewController: BaseViewController, QQApiInterfaceDelegate{
         let message = WXMediaMessage.init()
         message.title = appName
         message.description = slogan
-        message.setThumbImage(UIImage.init(named: logoName))
+        message.setThumbImage(UIImage.init(named: logoName)!)
         
         let webpageObj = WXWebpageObject.init()
         webpageObj.webpageUrl = shareURL
@@ -156,7 +156,7 @@ class ShowShareViewController: BaseViewController, QQApiInterfaceDelegate{
         
         let url = URL.init(string: shareURL)!
         let img = UIImage.init(named: logoName)!
-        let imgData = UIImagePNGRepresentation(img)!
+        let imgData = img.pngData()!
         let newsObj = QQApiNewsObject.init(url: url, title: appName, description: slogan, previewImageData: imgData, targetContentType: QQApiURLTargetTypeNews)!
         let req = SendMessageToQQReq.init(content: newsObj)
         

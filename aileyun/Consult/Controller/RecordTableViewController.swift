@@ -9,12 +9,18 @@
 import UIKit
 import MJRefresh
 import SVProgressHUD
+import HandyJSON
 
 protocol GetPhotoCenterDelegate : NSObjectProtocol {
     //设置协议方法
     func getPhotoCenter()->CGPoint
     
     func getImage()->UIImage
+}
+
+extension GetPhotoCenterDelegate {
+    func getPhotoCenter()->CGPoint { .zero }
+    func getImage()->UIImage { return UIImage() }
 }
 
 class RecordTableViewController: UITableViewController {
@@ -71,7 +77,7 @@ class RecordTableViewController: UITableViewController {
     lazy var nodataIV : UIImageView = {
         let IV = UIImageView.init(frame: CGRect.init(x: 40, y: 100, width: SCREEN_WIDTH - 80, height: SCREEN_WIDTH - 80))
         IV.image = UIImage.init(named: "noData")
-        IV.contentMode = UIViewContentMode.scaleAspectFit
+        IV.contentMode = .scaleAspectFit
         
         self.view.addSubview(IV)
         return IV
@@ -89,7 +95,7 @@ class RecordTableViewController: UITableViewController {
         
         self.tableView.separatorStyle = .none
         
-        let footV = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(RecordTableViewController.moreData))
+        let footV = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(moreData))
         tableView.mj_footer = footV
         
         tableView.contentInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0   , right: 0)
@@ -163,7 +169,7 @@ extension RecordTableViewController {
         }
     }
     
-    func moreData(){
+    @objc func moreData(){
         self.tableView.mj_footer.endRefreshing()
         
         SVProgressHUD.show()
@@ -200,8 +206,10 @@ extension RecordTableViewController {
                 if let dicArr = dicArr {
                     var dataArr = [HC_consultArrModel]()
                     for i in dicArr{
-                        let model = HC_consultArrModel.mj_object(withKeyValues: i)
-                        dataArr.append(model!)
+//                        let model = HC_consultArrModel.mj_object(withKeyValues: i)
+                        if let model = JSONDeserializer<HC_consultArrModel>.deserializeFrom(dict: i) {
+                            dataArr.append(model)
+                        }
                     }
                     //保存模型
                     if self?.dataArr != nil {
@@ -233,7 +241,7 @@ extension RecordTableViewController {
 
 }
 
-
+import HandyJSON
 extension RecordTableViewController {
     func convertToViewmodel(arr : [HC_consultArrModel]) -> [[HC_consultViewmodel]]{
         
@@ -246,7 +254,8 @@ extension RecordTableViewController {
             
             if let cont = secModel.content {
                 let tempdic = ["type" : TypeText, "content" : cont, "createTime" : secModel.createTime, "isDoctor" : "0", "headImg" : patientImg] as [String : Any]
-                let model = HC_consultCellModel.init(tempdic)
+//                let model = HC_consultCellModel.init(tempdic)
+                let model = JSONDeserializer<HC_consultCellModel>.deserializeFrom(dict: tempdic)
                 let viewmodel = HC_consultViewmodel.init()
                 viewmodel.model = model
                 secVMArr.append(viewmodel)
@@ -258,7 +267,8 @@ extension RecordTableViewController {
                     for i in arr{
                         if i != "" && i != nil {
                             let tempdic = ["type" : TypePic, "imageList" : i, "createTime" : secModel.createTime, "isDoctor" : "0", "headImg" : patientImg] as [String : Any]
-                            let model = HC_consultCellModel.init(tempdic)
+//                            let model = HC_consultCellModel.init(tempdic)
+                            let model = JSONDeserializer<HC_consultCellModel>.deserializeFrom(dict: tempdic)
                             let viewmodel = HC_consultViewmodel.init()
                             viewmodel.model = model
                             secVMArr.append(viewmodel)
@@ -266,14 +276,15 @@ extension RecordTableViewController {
                     }
                 }else if imgS.hasSuffix(".jpg"){
                     let tempdic = ["type" : TypePic, "imageList" : imgS, "createTime" : secModel.createTime, "isDoctor" : "0", "headImg" : patientImg] as [String : Any]
-                    let model = HC_consultCellModel.init(tempdic)
+//                    let model = HC_consultCellModel.init(tempdic)
+                    let model = JSONDeserializer<HC_consultCellModel>.deserializeFrom(dict: tempdic)
                     let viewmodel = HC_consultViewmodel.init()
                     viewmodel.model = model
                     secVMArr.append(viewmodel)
                 }
             }
             
-            guard (secModel.replyList?.count)! > 0 else{
+            guard secModel.replyList.count > 0 else{
                 viewmodelArr.append(secVMArr)
                 continue
             }
@@ -283,7 +294,8 @@ extension RecordTableViewController {
                 
                 if replyModel.content != nil && replyModel.content != ""{
                     let tempdic = ["type" : TypeText, "content" : replyModel.content, "createT" : replyModel.createTime, "isDoctor" : "1", "headImg" : secModel.doctorImg] as [String : Any]
-                    let model = HC_consultCellModel.init(tempdic)
+//                    let model = HC_consultCellModel.init(tempdic)
+                    let model = JSONDeserializer<HC_consultCellModel>.deserializeFrom(dict: tempdic)
                     let viewmodel = HC_consultViewmodel.init()
                     viewmodel.model = model
                     secVMArr.append(viewmodel)
@@ -294,20 +306,23 @@ extension RecordTableViewController {
                         let arr = imgS.components(separatedBy: ",")
                         for i in arr{
                             let tempdic = ["type" : TypePic, "imageList" : i, "createT" : replyModel.createTime, "isDoctor" : "1", "headImg" : secModel.doctorImg] as [String : Any]
-                            let model = HC_consultCellModel.init(tempdic)
+//                            let model = HC_consultCellModel.init(tempdic)
+                            let model = JSONDeserializer<HC_consultCellModel>.deserializeFrom(dict: tempdic)
                             let viewmodel = HC_consultViewmodel.init()
                             viewmodel.model = model
                             secVMArr.append(viewmodel)
                         }
                     }else if imgS.hasSuffix(".jpg"){
                         let tempdic = ["type" : TypePic, "imageList" : imgS, "createT" : replyModel.createTime, "isDoctor" : "1", "headImg" : secModel.doctorImg] as [String : Any]
-                        let model = HC_consultCellModel.init(tempdic)
+//                        let model = HC_consultCellModel.init(tempdic)
+                        let model = JSONDeserializer<HC_consultCellModel>.deserializeFrom(dict: tempdic)
                         let viewmodel = HC_consultViewmodel.init()
                         viewmodel.model = model
                         secVMArr.append(viewmodel)
                     }else if imgS.hasSuffix(".amr"){
                         let tempdic = ["type" : TypeVoice, "imageList" : imgS, "createT" : replyModel.createTime, "isDoctor" : "1", "headImg" : secModel.doctorImg] as [String : Any]
-                        let model = HC_consultCellModel.init(tempdic)
+//                        let model = HC_consultCellModel.init(tempdic)
+                        let model = JSONDeserializer<HC_consultCellModel>.deserializeFrom(dict: tempdic)
                         let viewmodel = HC_consultViewmodel.init()
                         viewmodel.model = model
                         secVMArr.append(viewmodel)
@@ -471,8 +486,8 @@ extension RecordTableViewController {
 
 extension RecordTableViewController : UINavigationControllerDelegate {
     
-    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+     
         let pushTransition = PushAnimation()
         
         let oriCenter = photoCenterDelegate?.getPhotoCenter()
@@ -482,7 +497,7 @@ extension RecordTableViewController : UINavigationControllerDelegate {
             HCPrint(message: scP)
         }
         
-        if operation == UINavigationControllerOperation.push{
+        if operation == .push{
             pushTransition.aniType = .kAnimatorTransitionTypePush
             pushTransition.itemCenter = scP
         }else{
@@ -494,6 +509,7 @@ extension RecordTableViewController : UINavigationControllerDelegate {
         pushTransition.image = photoCenterDelegate?.getImage()
         
         return pushTransition
+
     }
 }
 

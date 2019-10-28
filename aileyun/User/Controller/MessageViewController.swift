@@ -21,7 +21,7 @@ class MessageViewController: BaseViewController {
         t.delegate = self
         t.tableFooterView = UIView()
         t.separatorStyle = .none
-        t.rowHeight = UITableViewAutomaticDimension
+        t.rowHeight = UITableView.automaticDimension
         t.estimatedRowHeight = 110
         self.view.addSubview(t)
         return t
@@ -30,7 +30,7 @@ class MessageViewController: BaseViewController {
     lazy var nodataIV : UIImageView = {
         let IV = UIImageView.init(frame: CGRect.init(x: 40, y: 100, width: SCREEN_WIDTH - 80, height: SCREEN_WIDTH - 80))
         IV.image = UIImage.init(named: "noData")
-        IV.contentMode = UIViewContentMode.scaleAspectFit
+        IV.contentMode = .scaleAspectFit
         
         self.view.addSubview(IV)
         return IV
@@ -62,7 +62,7 @@ class MessageViewController: BaseViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    func requestData(){
+    @objc func requestData(){
         SVProgressHUD.show()
         let To = String.init(format: "%d", (UserManager.shareIntance.HCUser?.id?.intValue)!)
         HttpRequestManager.shareIntance.HC_messageGroup(To: To) { [weak self](success, arr) in

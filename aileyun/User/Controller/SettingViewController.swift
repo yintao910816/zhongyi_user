@@ -49,7 +49,7 @@ class SettingViewController: BaseViewController {
         let x = (SCREEN_WIDTH - 200) / 2
         let imgV = UIImageView.init(frame: CGRect.init(x: x, y: 20, width: 200, height: 100))
         imgV.image = UIImage.init(named: shareImgName)
-        imgV.contentMode = UIViewContentMode.scaleAspectFit
+        imgV.contentMode = .scaleAspectFit
         tableHeadV.addSubview(imgV)
         
         tableV.tableHeaderView = tableHeadV

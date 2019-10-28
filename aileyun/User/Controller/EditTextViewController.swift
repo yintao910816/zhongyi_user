@@ -82,17 +82,17 @@ class EditTextViewController: BaseViewController {
         let h = UIImageView.init(frame: CGRect.init(x: 80, y: 100, width: SCREEN_WIDTH - 160, height: SCREEN_WIDTH - 160))
         h.layer.cornerRadius = 5
         h.clipsToBounds = true
-        h.contentMode = UIViewContentMode.scaleAspectFill
+        h.contentMode = .scaleAspectFill
         self.view.addSubview(h)
         return h
     }()
     
     lazy var datePicker : UIDatePicker = {
         let picker = UIDatePicker.init()
-        picker.datePickerMode = UIDatePickerMode.date
+        picker.datePickerMode = .date
         let local = Locale.init(identifier: "zh")
         picker.locale = local
-        picker.addTarget(self, action: #selector(EditTextViewController.dateChange), for: UIControlEvents.valueChanged)
+        picker.addTarget(self, action: #selector(EditTextViewController.dateChange), for: .valueChanged)
         return picker
     }()
     
@@ -111,7 +111,7 @@ class EditTextViewController: BaseViewController {
         
         userInfoM = UserManager.shareIntance.HCUserInfo
         
-        let rightItem = UIBarButtonItem.init(title: "确定", style: .plain, target: self, action: #selector(EditTextViewController.confirm))
+        let rightItem = UIBarButtonItem.init(title: "确定", style: .plain, target: self, action: #selector(confirm))
         self.navigationItem.rightBarButtonItem = rightItem
         
         let space = AppDelegate.shareIntance.space
@@ -131,7 +131,7 @@ class EditTextViewController: BaseViewController {
         
         let picBtn = UIButton()
         picBtn.tag = 0
-        picBtn.setTitle("相册", for: UIControlState.normal)
+        picBtn.setTitle("相册", for: .normal)
         picBtn.backgroundColor = kDefaultThemeColor
         picBtn.layer.cornerRadius = 5
         contV.addSubview(picBtn)
@@ -144,7 +144,7 @@ class EditTextViewController: BaseViewController {
         
         let photoBtn = UIButton()
         photoBtn.tag = 1
-        photoBtn.setTitle("拍照", for: UIControlState.normal)
+        photoBtn.setTitle("拍照", for: UIControl.State.normal)
         photoBtn.backgroundColor = kDefaultThemeColor
         photoBtn.layer.cornerRadius = 5
         contV.addSubview(photoBtn)
@@ -157,7 +157,7 @@ class EditTextViewController: BaseViewController {
         photoBtn.addTarget(self, action: #selector(EditTextViewController.selectFromSystem), for: .touchUpInside)
     }
     
-    func selectFromSystem(sender : UIButton){
+    @objc func selectFromSystem(sender : UIButton){
         if sender.tag == 0 {
             systemPic()
         }else{
@@ -165,7 +165,7 @@ class EditTextViewController: BaseViewController {
         }
     }
     
-    func dateChange(){
+    @objc func dateChange(){
         let fmt = DateFormatter.init()
         fmt.dateFormat = "yyyy-MM-dd"
         let s = fmt.string(from: datePicker.date)
@@ -173,7 +173,7 @@ class EditTextViewController: BaseViewController {
     }
     
     
-    func confirm(){
+    @objc func confirm(){
         guard inputF.text != "" || chooseImg == true else{
             HCShowError(info: "没有修改任何资料")
             return
@@ -287,7 +287,7 @@ extension EditTextViewController {
     func takePhoto(){
         if checkCameraPermissions() {
             let photoVC = UIImagePickerController()
-            photoVC.sourceType = UIImagePickerControllerSourceType.camera
+            photoVC.sourceType = .camera
             photoVC.delegate = self
             photoVC.allowsEditing = true
             photoVC.showsCameraControls = true
@@ -295,7 +295,7 @@ extension EditTextViewController {
         }else{
             authorizationForCamera(confirmBlock: { [weak self]()in
                 let photoVC = UIImagePickerController()
-                photoVC.sourceType = UIImagePickerControllerSourceType.camera
+                photoVC.sourceType = .camera
                 photoVC.delegate = self
                 photoVC.allowsEditing = true
                 photoVC.showsCameraControls = true
@@ -307,7 +307,7 @@ extension EditTextViewController {
     
     func systemPic(){
         let systemPicVC = UIImagePickerController()
-        systemPicVC.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        systemPicVC.sourceType = .photoLibrary
         systemPicVC.delegate = self
         systemPicVC.allowsEditing = true
         UIApplication.shared.keyWindow?.rootViewController?.present(systemPicVC, animated: true, completion: nil)

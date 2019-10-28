@@ -46,7 +46,7 @@ class HCLocationManager: NSObject {
             let tempAction = UIAlertAction(title: "取消", style: .cancel) { (action) in
             }
             let callAction = UIAlertAction(title: "立即设置", style: .default) { (action) in
-                let url = URL.init(string: UIApplicationOpenSettingsURLString)
+                let url = URL.init(string: UIApplication.openSettingsURLString)
                 if UIApplication.shared.canOpenURL(url!) {
                     UIApplication.shared.openURL(url!)
                 }

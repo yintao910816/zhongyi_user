@@ -7,18 +7,21 @@
 //
 
 import UIKit
+import HandyJSON
 
-class KnowledgeListModel: NSObject {
+class KnowledgeListModel: NSObject, HandyJSON {
     
     var name : String?
     var value : String?
-    var detailList : NSArray?
+    var detailList: [KnowledgeModel] = []
     var id : String?
     var order : NSNumber?
     
-    override static func mj_objectClassInArray() -> [AnyHashable : Any]! {
-        return ["detailList" : KnowledgeModel.classForCoder()]
-    }
+//    override static func mj_objectClassInArray() -> [AnyHashable : Any]! {
+//        return ["detailList" : KnowledgeModel.classForCoder()]
+//    }
 
-    
+    required override init() {
+        
+    }
 }

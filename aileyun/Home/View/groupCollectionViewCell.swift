@@ -20,7 +20,7 @@ class groupCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        imgV.contentMode = UIViewContentMode.scaleToFill
+        imgV.contentMode = .scaleToFill
         self.addSubview(imgV)
         
     }

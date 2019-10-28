@@ -13,7 +13,7 @@ class UserTableViewCell: UITableViewCell {
     let titleL = UILabel()
     let imgV = UIImageView()
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
         
@@ -34,7 +34,7 @@ class UserTableViewCell: UITableViewCell {
             make.centerY.height.equalTo(self)
             make.width.equalTo(20)
         }
-        imgV.contentMode = UIViewContentMode.right
+        imgV.contentMode = .right
         imgV.image = UIImage.init(named: "箭头")
         
         

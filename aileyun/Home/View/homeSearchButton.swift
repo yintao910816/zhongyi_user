@@ -60,7 +60,7 @@ class homeSearchButton: UIButton {
             make.centerY.equalTo(self)
             make.width.height.equalTo(20)
         })
-        searchIV.contentMode = UIViewContentMode.scaleAspectFit
+        searchIV.contentMode = .scaleAspectFit
         
         infoLabel.snp.updateConstraints { (make) in
             make.left.equalTo(searchIV.snp.right).offset(10)

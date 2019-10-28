@@ -38,7 +38,7 @@ class SettingTableViewCell: UITableViewCell {
         }
     }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
         
@@ -58,7 +58,7 @@ class SettingTableViewCell: UITableViewCell {
             make.centerY.height.equalTo(self)
             make.width.equalTo(20)
         }
-        RightImgV.contentMode = UIViewContentMode.right
+        RightImgV.contentMode = .right
         RightImgV.image = UIImage.init(named: "箭头")
         
         self.addSubview(ImgV)
@@ -67,7 +67,7 @@ class SettingTableViewCell: UITableViewCell {
             make.centerY.equalTo(self)
             make.height.width.equalTo(25)
         }
-        ImgV.contentMode = UIViewContentMode.scaleAspectFit
+        ImgV.contentMode = .scaleAspectFit
         
         self.addSubview(Img2V)
         Img2V.snp.updateConstraints { (make) in
@@ -75,7 +75,7 @@ class SettingTableViewCell: UITableViewCell {
             make.centerY.equalTo(self)
             make.height.width.equalTo(25)
         }
-        Img2V.contentMode = UIViewContentMode.scaleAspectFit
+        Img2V.contentMode = .scaleAspectFit
     }
     
     

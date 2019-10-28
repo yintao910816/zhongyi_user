@@ -89,7 +89,7 @@ class ConsultRecordViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let leftItem = UIBarButtonItem(image: UIImage(named: "返回灰"), style: .plain, target: self, action: #selector(ConsultRecordViewController.popToRootVC))
+        let leftItem = UIBarButtonItem(image: UIImage(named: "返回灰"), style: .plain, target: self, action: #selector(popToRootVC))
         self.navigationItem.leftBarButtonItem = leftItem
         
         //展示图片后，清空delegate
@@ -98,7 +98,7 @@ class ConsultRecordViewController: BaseViewController {
 
     }
     
-    func popToRootVC(){
+    @objc func popToRootVC(){
         HttpClient.shareIntance.cancelAllRequest()
         self.navigationController?.popToRootViewController(animated: true)
     }
@@ -126,31 +126,31 @@ class ConsultRecordViewController: BaseViewController {
         allBtn.setTitle("全部", for: .normal)
         allBtn.isSelected = true
         allBtn.tag = 0
-        allBtn.addTarget(self, action: #selector(ConsultRecordViewController.chooseCategory), for: UIControlEvents.touchUpInside)
+        allBtn.addTarget(self, action: #selector(ConsultRecordViewController.chooseCategory), for: .touchUpInside)
         contV.addSubview(allBtn)
         allBtn.frame = CGRect.init(x: 20, y: 0, width: width, height: 40)
         
         notPayBtn.setTitle("未支付", for: .normal)
         notPayBtn.tag = 1
-        notPayBtn.addTarget(self, action: #selector(ConsultRecordViewController.chooseCategory), for: UIControlEvents.touchUpInside)
+        notPayBtn.addTarget(self, action: #selector(ConsultRecordViewController.chooseCategory), for: .touchUpInside)
         contV.addSubview(notPayBtn)
         notPayBtn.frame = CGRect.init(x: 25 + width, y: 0, width: width, height: 40)
         
         waitBtn.setTitle("待回复", for: .normal)
         waitBtn.tag = 2
-        waitBtn.addTarget(self, action: #selector(ConsultRecordViewController.chooseCategory), for: UIControlEvents.touchUpInside)
+        waitBtn.addTarget(self, action: #selector(ConsultRecordViewController.chooseCategory), for: .touchUpInside)
         contV.addSubview(waitBtn)
         waitBtn.frame = CGRect.init(x: 30 + width * 2, y: 0, width: width, height: 40)
         
         didReplyBtn.setTitle("已回复", for: .normal)
         didReplyBtn.tag = 3
-        didReplyBtn.addTarget(self, action: #selector(ConsultRecordViewController.chooseCategory), for: UIControlEvents.touchUpInside)
+        didReplyBtn.addTarget(self, action: #selector(ConsultRecordViewController.chooseCategory), for: .touchUpInside)
         contV.addSubview(didReplyBtn)
         didReplyBtn.frame = CGRect.init(x: 35 + width * 3, y: 0, width: width, height: 40)
         
         backBtn.setTitle("已退回", for: .normal)
         backBtn.tag = 4
-        backBtn.addTarget(self, action: #selector(ConsultRecordViewController.chooseCategory), for: UIControlEvents.touchUpInside)
+        backBtn.addTarget(self, action: #selector(ConsultRecordViewController.chooseCategory), for: .touchUpInside)
         contV.addSubview(backBtn)
         backBtn.frame = CGRect.init(x: 40 + width * 4, y: 0, width: width, height: 40)
         
@@ -231,7 +231,7 @@ class ConsultRecordViewController: BaseViewController {
     }
     
     
-    func chooseCategory(btn : chooseButton){
+    @objc func chooseCategory(btn : chooseButton){
         modifyBtn(btn: btn)
         
         scrollV.setContentOffset(CGPoint.init(x: SCREEN_WIDTH * CGFloat(btn.tag), y: 0), animated: true)

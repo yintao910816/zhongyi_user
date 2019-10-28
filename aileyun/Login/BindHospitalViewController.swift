@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import HandyJSON
 
 class BindHospitalViewController: UIViewController {
     
@@ -59,7 +60,7 @@ class BindHospitalViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.tintColor = UIColor.white
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
@@ -72,7 +73,8 @@ class BindHospitalViewController: UIViewController {
     func setModel(){
         let dic = NSDictionary.init(dictionary: ["id" : "17", "name" : "中山一院生殖中心"])
 //        let dic = NSDictionary.init(dictionary: ["id" : "19", "name" : "鼓楼医院生殖中心"])
-        hospitalModel = HospitalListModel.init(dic as! [String : Any])
+//        hospitalModel = HospitalListModel.init(dic as! [String : Any])
+        hospitalModel = JSONDeserializer<HospitalListModel>.deserializeFrom(dict: dic)
     }
     
     func setData(){
@@ -230,8 +232,8 @@ class BindHospitalViewController: UIViewController {
         }
         bindBtn.layer.cornerRadius = 5
         bindBtn.backgroundColor = kDefaultThemeColor
-        bindBtn.setTitle("绑定", for: UIControlState.normal)
-        bindBtn.addTarget(self, action: #selector(BindHospitalViewController.bindHospital), for: UIControlEvents.touchUpInside)
+        bindBtn.setTitle("绑定", for: .normal)
+        bindBtn.addTarget(self, action: #selector(BindHospitalViewController.bindHospital), for: .touchUpInside)
 
         let abandonBtn = UIButton()
         scrollV.addSubview(abandonBtn)
@@ -244,10 +246,10 @@ class BindHospitalViewController: UIViewController {
         abandonBtn.layer.cornerRadius = 5
         abandonBtn.layer.borderColor = kLightTextColor.cgColor
         abandonBtn.layer.borderWidth = 1
-        abandonBtn.setTitle("暂不绑定", for: UIControlState.normal)
-        abandonBtn.setTitleColor(kLightTextColor, for: UIControlState.normal)
+        abandonBtn.setTitle("暂不绑定", for: .normal)
+        abandonBtn.setTitleColor(kLightTextColor, for: .normal)
         
-        abandonBtn.addTarget(self, action: #selector(BindHospitalViewController.abandonBind), for: UIControlEvents.touchUpInside)
+        abandonBtn.addTarget(self, action: #selector(BindHospitalViewController.abandonBind), for: .touchUpInside)
         
         let attentionL = UILabel()
         
@@ -260,7 +262,7 @@ class BindHospitalViewController: UIViewController {
         paraStyle.lineSpacing = 3
         paraStyle.paragraphSpacing = 3
         paraStyle.headIndent = 20
-        attStr.addAttribute(NSParagraphStyleAttributeName, value: paraStyle, range: NSRange.init(location: 0, length: attStr.length))
+        attStr.addAttribute(NSAttributedString.Key.paragraphStyle, value: paraStyle, range: NSRange.init(location: 0, length: attStr.length))
         
         attentionL.attributedText = attStr
         attentionL.sizeToFit()
@@ -274,7 +276,7 @@ class BindHospitalViewController: UIViewController {
     }
     
     
-    func hospitalList(){
+    @objc func hospitalList(){
 //        self.view.endEditing(true)
         
         //中一不需要跳转列表
@@ -332,7 +334,7 @@ class BindHospitalViewController: UIViewController {
         }
     }
     
-    func bindHospital(){
+    @objc func bindHospital(){
         guard hospitalModel != nil else {
             HCShowError(info: "请选择生殖中心！")
             return
@@ -380,7 +382,7 @@ class BindHospitalViewController: UIViewController {
         
     }
 
-    func abandonBind(){
+    @objc func abandonBind(){
         
         let alertController = UIAlertController(title: "提醒",
                                                 message: "如果不绑定，则无法使用预约挂号、检验报告等核心功能", preferredStyle: .alert)

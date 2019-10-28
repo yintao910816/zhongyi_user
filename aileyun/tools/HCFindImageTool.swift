@@ -76,15 +76,11 @@ class HCFindImageTool: NSObject {
     }
     
     private func storeImage(url : String, key : String, img : UIImage){
-        if let data = UIImagePNGRepresentation(img) as NSData?{
-            let path = getFilePathStr(url: url)
+        if let data = img.pngData() {
+            let path = URL.init(fileURLWithPath: getFilePathStr(url: url))
             DispatchQueue.global().async {
-                let isSuc = data.write(toFile: path, atomically: true)
-                if isSuc{
-                    UserDefaults.standard.set(url, forKey: key)
-                }else{
-                    HCPrint(message: "图片缓存失败")
-                }
+                try? data.write(to: path, options: .atomic)
+                UserDefaults.standard.set(url, forKey: key)
             }
         }else{
             HCPrint(message: "图片缓存失败")

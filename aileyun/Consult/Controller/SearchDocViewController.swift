@@ -52,7 +52,7 @@ class SearchDocViewController: BaseViewController, UITableViewDataSource, UITabl
         tableView.delegate = self
         self.tableView.register(ConsultViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         
-        let footV = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(SearchDocViewController.searchTheName))
+        let footV = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(searchTheName))
         tableView.mj_footer = footV
         
     }
@@ -107,7 +107,7 @@ class SearchDocViewController: BaseViewController, UITableViewDataSource, UITabl
 extension SearchDocViewController : UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if (searchBar.text?.characters.count)! > 0{
+        if (searchBar.text?.count)! > 0{
             searchBar.setShowsCancelButton(true, animated: true)
             let uiButton = searchBar.value(forKey: "cancelButton") as! UIButton
             uiButton.setTitle("取消", for: .normal)
@@ -149,7 +149,7 @@ extension SearchDocViewController : UISearchBarDelegate {
         searchTheName()
     }
     
-    func searchTheName(){
+    @objc func searchTheName(){
         guard hasNext == true else{
             HCShowError(info: "已加载全部信息")
             return

@@ -21,7 +21,7 @@ class ConsultHeadView: UIView {
         
         self.addSubview(headImgV)
         headImgV.image = UIImage.init(named: "咨询-问")
-        headImgV.contentMode = UIViewContentMode.scaleAspectFit
+        headImgV.contentMode = .scaleAspectFit
         
         self.addSubview(nameL)
         nameL.font = UIFont.init(name: kReguleFont, size: 15)

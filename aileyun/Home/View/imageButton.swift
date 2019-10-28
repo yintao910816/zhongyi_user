@@ -16,7 +16,7 @@ class imageButton: UIButton {
         super.init(frame: frame)
        
         self.addSubview(imgV)
-        imgV.contentMode = UIViewContentMode.scaleToFill
+        imgV.contentMode = .scaleToFill
         imgV.clipsToBounds = true
     }
     

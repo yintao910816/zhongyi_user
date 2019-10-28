@@ -7,16 +7,21 @@
 //
 
 import UIKit
+import HandyJSON
 
-class UnreadModel: NSObject {
+class UnreadModel: NSObject, HandyJSON {
     
     var unread : NSNumber?
     var patientId : NSNumber?
 
     // MARK:- 构造函数
-    init(_ dict : [String : Any]) {
-        super.init()
-        setValuesForKeys(dict)
+//    init(_ dict : [String : Any]) {
+//        super.init()
+//        setValuesForKeys(dict)
+//    }
+//    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
+    
+    required override init() {
+        
     }
-    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
 }

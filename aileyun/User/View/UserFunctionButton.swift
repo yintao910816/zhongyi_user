@@ -18,7 +18,7 @@ class UserFunctionButton: UIButton {
         imageView?.contentMode = .center
         titleLabel?.textAlignment = .center
         titleLabel?.font = UIFont.init(name: kReguleFont, size: 14)
-        setTitleColor(kLightTextColor, for: UIControlState.normal)
+        setTitleColor(kLightTextColor, for: .normal)
     }
 
     required init?(coder aDecoder: NSCoder) {

@@ -37,7 +37,7 @@ class MessageTableViewCell: UITableViewCell {
         return d
     }()
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.addSubview(contentL)
@@ -55,7 +55,7 @@ class MessageTableViewCell: UITableViewCell {
             make.height.width.equalTo(15)
         }
         imgV.image = UIImage.init(named: "时间")
-        imgV.contentMode = UIViewContentMode.scaleAspectFit
+        imgV.contentMode = .scaleAspectFit
         
         self.addSubview(dateL)
         dateL.snp.updateConstraints { (make) in

@@ -90,7 +90,7 @@ class HomeTableViewController: BaseViewController {
     lazy var tableV : UITableView = {
         let space = AppDelegate.shareIntance.space
         let t = UITableView.init(frame: CGRect.init(x: 0, y: space.topSpace, width: SCREEN_WIDTH, height: SCREEN_HEIGHT - space.topSpace - space.bottomSpace - 48))
-        t.rowHeight = UITableViewAutomaticDimension
+        t.rowHeight = UITableView.automaticDimension
         t.estimatedRowHeight = 300
         t.dataSource = self
         t.delegate = self
@@ -172,7 +172,7 @@ class HomeTableViewController: BaseViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    func beginRefresh(){
+    @objc func beginRefresh(){
         self.tableV.mj_header.beginRefreshing()
     }
     
@@ -199,9 +199,9 @@ class HomeTableViewController: BaseViewController {
         self.view.insertSubview(naviBackV, aboveSubview: tableV)
         
         //诊疗流程
-        selectV.guideBtn.addTarget(self, action: #selector(HomeTableViewController.treatFlow), for: UIControlEvents.touchUpInside)
+        selectV.guideBtn.addTarget(self, action: #selector(HomeTableViewController.treatFlow), for: .touchUpInside)
         //暂时去之前的论坛
-        selectV.classroomBtn.addTarget(self, action: #selector(HomeTableViewController.groupDiscuss), for: UIControlEvents.touchUpInside)
+        selectV.classroomBtn.addTarget(self, action: #selector(HomeTableViewController.groupDiscuss), for: .touchUpInside)
         
         let headRefresher = MJRefreshNormalHeader.init(refreshingTarget: self, refreshingAction: #selector(HomeTableViewController.requestData))
         headRefresher?.setTitle("下拉刷新数据", for: .idle)
@@ -231,11 +231,11 @@ class HomeTableViewController: BaseViewController {
         self.navigationItem.rightBarButtonItem = rightItem
     }
     
-    func messageAction(){
+    @objc func messageAction(){
         self.navigationController?.pushViewController(MessageViewController(), animated: true)
     }
     
-    func goodNewsDetail(){
+    @objc func goodNewsDetail(){
         SVProgressHUD.show()
         HttpRequestManager.shareIntance.HC_getH5URL(keyCode: "GOOD_NEWS_2017") { [weak self](success, info) in
             if success == true {
@@ -250,7 +250,7 @@ class HomeTableViewController: BaseViewController {
         }
     }
     
-    func noticeDetail(){
+    @objc func noticeDetail(){
         SVProgressHUD.show()
         if noticeV.modelArr![noticeV.row].typeCom == "dynamic" {
             let notIdS = String.init(format: "%d", (noticeV.modelArr![noticeV.row].id!.intValue))
@@ -269,7 +269,7 @@ class HomeTableViewController: BaseViewController {
         }
     }
     
-    func qrcodeVC(){
+    @objc func qrcodeVC(){
         self.navigationController?.pushViewController(QRCodeScanViewController(), animated: true)
     }
     
@@ -316,7 +316,7 @@ class HomeTableViewController: BaseViewController {
     }
     
     
-    func markUnreadNum(){
+    @objc func markUnreadNum(){
         HttpRequestManager.shareIntance.HC_unreadNum { [weak self](model, msg) in
             if let m = model {
                 self?.messageBtn.number = m.unread?.intValue
@@ -324,7 +324,7 @@ class HomeTableViewController: BaseViewController {
         }
     }
     
-    func requestData(){
+    @objc func requestData(){
         // 防止401导致未处理
         tableV.mj_header.endRefreshing()
         
@@ -477,7 +477,7 @@ extension HomeTableViewController {
     }
     
     //专家指导
-    func treatFlow(){
+    @objc func treatFlow(){
         guard let s = expertGuidS else {return}
         if s == "EXPERT_GUIDANCE_2017" {
             let tabVC = UIApplication.shared.keyWindow?.rootViewController as! MainTabBarController
@@ -490,7 +490,7 @@ extension HomeTableViewController {
     }
     
     //在线课堂
-    func groupDiscuss(){
+    @objc func groupDiscuss(){
         guard classOnline != nil else {return}
         if classOnline  == "#" {
             HCShowInfo(info: "功能暂不开放")
@@ -501,7 +501,7 @@ extension HomeTableViewController {
         }
     }
     
-    func gotoGroup(){
+    @objc func gotoGroup(){
         let rootVC = UIApplication.shared.keyWindow?.rootViewController as! UITabBarController
         rootVC.selectedIndex = 2
         
@@ -537,7 +537,7 @@ extension HomeTableViewController : UITableViewDataSource, UITableViewDelegate {
         
         let knowledgeIV = UIImageView()
         knowledgeIV.image = UIImage.init(named: "标题")
-        knowledgeIV.contentMode = UIViewContentMode.scaleAspectFit
+        knowledgeIV.contentMode = .scaleAspectFit
         contV.addSubview(knowledgeIV)
         knowledgeIV.snp.updateConstraints { (make) in
             make.left.equalTo(contV).offset(20)
@@ -557,7 +557,7 @@ extension HomeTableViewController : UITableViewDataSource, UITableViewDelegate {
         
         let imgV = UIImageView()
         imgV.image = UIImage.init(named: "箭头")
-        imgV.contentMode = UIViewContentMode.right
+        imgV.contentMode = .right
         contV.addSubview(imgV)
         imgV.snp.updateConstraints { (make) in
             make.right.equalTo(contV).offset(-20)

@@ -23,7 +23,7 @@ class moreButton: UIButton {
         self.addSubview(titelL)
         
         imgV.image = UIImage.init(named: "箭头")
-        imgV.contentMode = UIViewContentMode.left
+        imgV.contentMode = .left
         self.addSubview(imgV)
     }
     

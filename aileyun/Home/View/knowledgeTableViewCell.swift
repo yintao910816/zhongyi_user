@@ -32,10 +32,10 @@ class knowledgeTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.selectionStyle = UITableViewCellSelectionStyle.none
+        self.selectionStyle = .none
     
         self.addSubview(imgV)
         imgV.snp.updateConstraints { (make) in
@@ -78,7 +78,7 @@ class knowledgeTableViewCell: UITableViewCell {
         
         let commentIV = UIImageView()
         commentIV.image = UIImage.init(named: "评论量")
-        commentIV.contentMode = UIViewContentMode.scaleAspectFit
+        commentIV.contentMode = .scaleAspectFit
         self.addSubview(commentIV)
         commentIV.snp.updateConstraints { (make) in
             make.right.equalTo(commentL.snp.left)
@@ -100,7 +100,7 @@ class knowledgeTableViewCell: UITableViewCell {
         
         let readIV = UIImageView()
         readIV.image = UIImage.init(named: "浏览量")
-        readIV.contentMode = UIViewContentMode.scaleAspectFit
+        readIV.contentMode = .scaleAspectFit
         self.addSubview(readIV)
         readIV.snp.updateConstraints { (make) in
             make.right.equalTo(readL.snp.left)

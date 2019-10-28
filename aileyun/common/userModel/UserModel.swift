@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import HandyJSON
 
-class UserModel: NSObject {
+class UserModel: NSObject, HandyJSON {
 
     var access_token : NSString?
     var expires_in : NSNumber?
@@ -17,13 +18,17 @@ class UserModel: NSObject {
     var unionid : NSString?
 
     
-    convenience init(_ dic : [String : Any]) {
-        self.init()
-        setValuesForKeys(dic)
-    }
+//    convenience init(_ dic : [String : Any]) {
+//        self.init()
+//        setValuesForKeys(dic)
+//    }
+//
+//    override func setValue(_ value: Any?, forUndefinedKey key: String) {
+//        //
+//    }
     
-    override func setValue(_ value: Any?, forUndefinedKey key: String) {
-        //
+    required override init() {
+        
     }
-    
+
 }

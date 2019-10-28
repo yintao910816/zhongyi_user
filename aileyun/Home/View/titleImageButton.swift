@@ -48,7 +48,7 @@ class titleImageButton: UIButton {
         self.backgroundColor = UIColor.white
         
         self.addSubview(imgV)
-        imgV.contentMode = UIViewContentMode.scaleToFill
+        imgV.contentMode = .scaleToFill
         imgV.clipsToBounds = true
         
         self.addSubview(titleL)

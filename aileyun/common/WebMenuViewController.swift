@@ -32,9 +32,9 @@ class WebMenuViewController: UIViewController {
             make.top.equalTo(self.view).offset(12)
             make.height.equalTo(50)
         }
-        shareBtn.setTitle("开始分享", for: UIControlState.normal)
-        shareBtn.setTitleColor(kTextColor, for: UIControlState.normal)
-        shareBtn.setImage(UIImage.init(named: "我参与的课程"), for: UIControlState.normal)
+        shareBtn.setTitle("开始分享", for: .normal)
+        shareBtn.setTitleColor(kTextColor, for: .normal)
+        shareBtn.setImage(UIImage.init(named: "我参与的课程"), for: .normal)
         shareBtn.titleLabel?.font = UIFont.init(name: kReguleFont, size: 14)
         shareBtn.backgroundColor = UIColor.white
         
@@ -45,7 +45,7 @@ class WebMenuViewController: UIViewController {
         maskLayer.path = path.cgPath
         shareBtn.layer.mask = maskLayer
         
-        shareBtn.addTarget(self, action: #selector(WebMenuViewController.click), for: UIControlEvents.touchUpInside)
+        shareBtn.addTarget(self, action: #selector(WebMenuViewController.click), for: .touchUpInside)
         
         let backToHomeBtn = menuButton()
         self.view.addSubview(backToHomeBtn)
@@ -55,9 +55,9 @@ class WebMenuViewController: UIViewController {
             make.top.equalTo(shareBtn.snp.bottom).offset(1)
             make.height.equalTo(50)
         }
-        backToHomeBtn.setTitle("回到首页", for: UIControlState.normal)
-        backToHomeBtn.setTitleColor(kTextColor, for: UIControlState.normal)
-        backToHomeBtn.setImage(UIImage.init(named: "我关注的"), for: UIControlState.normal)
+        backToHomeBtn.setTitle("回到首页", for: .normal)
+        backToHomeBtn.setTitleColor(kTextColor, for: .normal)
+        backToHomeBtn.setImage(UIImage.init(named: "我关注的"), for: .normal)
         backToHomeBtn.titleLabel?.font = UIFont.init(name: kReguleFont, size: 14)
         backToHomeBtn.backgroundColor = UIColor.white
         
@@ -71,13 +71,13 @@ class WebMenuViewController: UIViewController {
         
     }
     
-    func click(){
+    @objc func click(){
         self.dismiss(animated: false) { [weak self]()in
             self?.naviVC?.pushViewController(ShowShareViewController(), animated: true)
         }
     }
     
-    func backToHome(){
+    @objc func backToHome(){
         self.dismiss(animated: false) { [weak self]()in
             self?.naviVC?.popViewController(animated: true)
         }

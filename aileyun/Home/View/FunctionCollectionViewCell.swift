@@ -32,7 +32,7 @@ class FunctionCollectionViewCell: UICollectionViewCell {
         
         let ratio : CGFloat = 0.6
         
-        imgV.contentMode = UIViewContentMode.scaleAspectFit
+        imgV.contentMode = .scaleAspectFit
         self.addSubview(imgV)
         imgV.frame = CGRect.init(x: 0, y: 10, width: frame.size.width, height: frame.size.height * ratio)
         

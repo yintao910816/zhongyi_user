@@ -75,7 +75,7 @@ class HospitalListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.tintColor = UIColor.white
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
@@ -129,7 +129,7 @@ extension HospitalListViewController : UITableViewDataSource, UITableViewDelegat
 extension HospitalListViewController : UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if (searchBar.text?.characters.count)! > 0{
+        if (searchBar.text?.count)! > 0{
             searchBar.setShowsCancelButton(true, animated: true)
             let uiButton = searchBar.value(forKey: "cancelButton") as! UIButton
             uiButton.setTitle("取消", for: .normal)

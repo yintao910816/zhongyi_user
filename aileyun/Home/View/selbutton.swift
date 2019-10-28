@@ -17,7 +17,7 @@ class selbutton: UIButton {
         super.init(frame: frame)
         self.backgroundColor = UIColor.white
         
-        imgV.contentMode = UIViewContentMode.bottom
+        imgV.contentMode = .bottom
         self.addSubview(imgV)
         
         titelL.font = UIFont.init(name: kReguleFont, size: 14)

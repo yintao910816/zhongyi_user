@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import HandyJSON
 
-class KnowledgeModel: NSObject {
+class KnowledgeModel: NSObject, HandyJSON {
     
     var PAGE_URL : String?
     var TREATMENT : String?
@@ -33,4 +34,7 @@ class KnowledgeModel: NSObject {
         }
     }
 
+    required override init() {
+        
+    }
 }

@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import HandyJSON
 
-class UserQQModel: NSObject {
+class UserQQModel: NSObject, HandyJSON {
 
     
     var nickname : NSString?
@@ -20,13 +21,17 @@ class UserQQModel: NSObject {
     var expirationDate : Date?
     
     
-    convenience init(_ dic : [String : Any]) {
-        self.init()
-        setValuesForKeys(dic)
-    }
-    
-    override func setValue(_ value: Any?, forUndefinedKey key: String) {
-        //
+//    convenience init(_ dic : [String : Any]) {
+//        self.init()
+//        setValuesForKeys(dic)
+//    }
+//
+//    override func setValue(_ value: Any?, forUndefinedKey key: String) {
+//        //
+//    }
+
+    required override init() {
+        
     }
 
 }

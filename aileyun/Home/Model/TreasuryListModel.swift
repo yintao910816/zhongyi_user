@@ -7,18 +7,21 @@
 //
 
 import UIKit
+import HandyJSON
 
-class TreasuryListModel: NSObject {
+class TreasuryListModel: NSObject, HandyJSON {
     
-    var list : NSArray?
+    var list : [KnowledgeModel] = []
     var pageidx : NSNumber?
     var total : NSNumber?
     var pagecount : NSNumber?
     
     
-    override static func mj_objectClassInArray() -> [AnyHashable : Any]! {
-        return ["list" : KnowledgeModel.classForCoder()]
+//    override static func mj_objectClassInArray() -> [AnyHashable : Any]! {
+//        return ["list" : KnowledgeModel.classForCoder()]
+//    }
+
+    required override init() {
+        
     }
-
-
 }

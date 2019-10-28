@@ -19,11 +19,11 @@ class ChatVoiceTableViewCell : BaseChatTableViewCell {
     
     var convertSuccess : Bool = true
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.addSubview(voiceBtn)
-        voiceBtn.addTarget(self, action: #selector(ChatVoiceTableViewCell.clickVoice), for: UIControlEvents.touchUpInside)
+        voiceBtn.addTarget(self, action: #selector(clickVoice), for: .touchUpInside)
     }
     
     
@@ -49,7 +49,7 @@ class ChatVoiceTableViewCell : BaseChatTableViewCell {
         }
     }
     
-    func clickVoice(){
+    @objc func clickVoice(){
         
         var localURL : URL!
         
@@ -72,7 +72,7 @@ class ChatVoiceTableViewCell : BaseChatTableViewCell {
             }
             let audioSession = AVAudioSession.sharedInstance()
             do {
-                try audioSession.setCategory(AVAudioSessionCategoryPlayback)
+                try audioSession.setCategory(AVAudioSession.Category.playback)
                 try SharePlayer.shareIntance.audioPlayer = HCAudioPlayer.init(contentsOf: localURL!)
                 SharePlayer.shareIntance.audioPlayer.delegate = self
                 SharePlayer.shareIntance.audioPlayer.chatVoiceCell = self
@@ -102,7 +102,7 @@ class ChatVoiceTableViewCell : BaseChatTableViewCell {
         } else {
             // Fallback on earlier versions
         }
-        RunLoop.main.add(timer!, forMode: RunLoopMode.commonModes)
+        RunLoop.main.add(timer!, forMode: .common)
     }
     
     deinit {

@@ -49,7 +49,7 @@ class starView: UIView {
             let starV = UIImageView.init(frame: CGRect.init(x: x, y: padding, width: w, height: height))
             starV.tag = 5 - i
             starV.image = UIImage.init(named: "星级")
-            starV.contentMode = UIViewContentMode.scaleAspectFit
+            starV.contentMode = .scaleAspectFit
             
             imgVArr.append(starV)
             

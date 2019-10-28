@@ -22,7 +22,7 @@ class loginBtn: UIButton {
         titleL.font = UIFont.init(name: kReguleFont, size: 14)
         self.addSubview(titleL)
         
-        imgv.contentMode = UIViewContentMode.scaleAspectFit
+        imgv.contentMode = .scaleAspectFit
         self.addSubview(imgv)
         
     }

@@ -109,7 +109,7 @@ class SubmitViewController: BaseViewController {
         initUI()
     }
     
-    func endEditing(){
+    @objc func endEditing(){
         self.view.endEditing(true)
     }
     
@@ -246,23 +246,23 @@ extension SubmitViewController {
             make.height.equalTo(600)
         }
         
-        noticeBtn.setTitle("咨询须知", for: UIControlState.normal)
+        noticeBtn.setTitle("咨询须知", for: .normal)
         noticeBtn.titleLabel?.font = UIFont.init(name: kReguleFont, size: 14)
-        noticeBtn.setTitleColor(kTextColor, for: UIControlState.normal)
-        noticeBtn.setImage(UIImage.init(named: "未选中"), for: UIControlState.normal)
-        noticeBtn.setImage(UIImage.init(named: "选中"), for: UIControlState.selected)
+        noticeBtn.setTitleColor(kTextColor, for: .normal)
+        noticeBtn.setImage(UIImage.init(named: "未选中"), for: .normal)
+        noticeBtn.setImage(UIImage.init(named: "选中"), for: .selected)
         noticeBtn.titleEdgeInsets = UIEdgeInsets.init(top: 0, left: 15, bottom: 0, right: 0)
         noticeBtn.imageEdgeInsets = UIEdgeInsets.init(top: 0, left: -15, bottom: 0, right: 0)
         noticeBtn.isSelected = true
         containV2.addSubview(noticeBtn)
         
-        noticeBtn.addTarget(self, action: #selector(SubmitViewController.notice), for: UIControlEvents.touchUpInside)
+        noticeBtn.addTarget(self, action: #selector(SubmitViewController.notice), for: .touchUpInside)
         
         let s = "1、一问一答，医生本人回复\n2、3天内无人回复，全额退款\n3、医生的建议谨慎参考，对于咨询过程中出现的后果，本APP不承担法律责任\n4、医生提供的是在线咨询服务非医疗行为"
         let attrS = NSMutableAttributedString.init(string: s)
         let style = NSMutableParagraphStyle.init()
         style.lineSpacing = 10
-        attrS.addAttribute(NSParagraphStyleAttributeName, value: style, range: NSRange.init(location: 0, length: s.characters.count))
+        attrS.addAttribute(NSAttributedString.Key.paragraphStyle, value: style, range: NSRange.init(location: 0, length: s.count))
         
         let noticeL = UILabel.init(frame: CGRect.init(x: 20, y: 35, width: SCREEN_WIDTH - 40, height: 150))
         noticeL.font = UIFont.init(name: kReguleFont, size: 14)
@@ -271,22 +271,22 @@ extension SubmitViewController {
         noticeL.attributedText = attrS
         containV2.addSubview(noticeL)
         
-        submitBtn.setTitle("提交问题", for: UIControlState.normal)
+        submitBtn.setTitle("提交问题", for: .normal)
         submitBtn.titleLabel?.font = UIFont.init(name: kReguleFont, size: 16)
         submitBtn.backgroundColor = kDefaultThemeColor
         submitBtn.layer.cornerRadius = 5
         containV2.addSubview(submitBtn)
         
-        submitBtn.addTarget(self, action: #selector(SubmitViewController.submit), for: UIControlEvents.touchUpInside)
+        submitBtn.addTarget(self, action: #selector(SubmitViewController.submit), for: .touchUpInside)
         
     }
     
-    func notice(btn : UIButton){
+    @objc func notice(btn : UIButton){
         noticeBtn.isSelected = !btn.isSelected
     
     }
     
-    func submit(){
+    @objc func submit(){
         if noticeBtn.isSelected == false{
             HCShowError(info: "请勾选咨询须知")
         }else if contentInput.text == ""{

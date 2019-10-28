@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+ import HandyJSON
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate{
@@ -32,7 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate{
         let dic = UserDefaults.standard.value(forKey: kUserDic) as? [String : Any]
         
         if let dic = dic{
-            UserManager.shareIntance.HCUser = HCUserModel.init(dic)
+//            UserManager.shareIntance.HCUser = HCUserModel.init(dic)
+            UserManager.shareIntance.HCUser = JSONDeserializer<HCUserModel>.deserializeFrom(dict: dic)
             Login = true
         }else{
             Login = false
@@ -43,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate{
     }
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
 //        IpsmapServices.setAppKey(NaviAppkey)
         
@@ -52,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate{
 //
 //        IpsmapServices.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        WXApi.registerApp(weixinAppid)
+        WXApi.registerApp(weixinAppid, universalLink: "")
         
         UMeng(launchOptions: launchOptions)
         
@@ -79,7 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate{
     
     
     
-    func UMeng(launchOptions: [UIApplicationLaunchOptionsKey: Any]?){
+    func UMeng(launchOptions: [UIApplication.LaunchOptionsKey: Any]?){
         let obj = UMAnalyticsConfig.init()
         obj.appKey = KUMengKey
         MobClick.start(withConfigure: obj)
@@ -169,7 +171,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate{
 }
 
 extension AppDelegate {
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         
         HCPrint(message: url.absoluteString)
         
