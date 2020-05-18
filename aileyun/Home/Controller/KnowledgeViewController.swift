@@ -226,7 +226,11 @@ extension KnowledgeViewController : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        if tableView == currentTV {
+            return modelArr?[currentIndex].detailList.count ?? 0
+        }else {
+            return modelArr?[nextIndex].detailList.count ?? 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
